@@ -18,18 +18,18 @@ export function SectionCard({
   return (
     <div
       className={cn(
-        "rounded-[1.35rem] border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm sm:rounded-2xl",
+        "rounded-[1.5rem] border border-white/[0.035] bg-white/[0.025] backdrop-blur-sm sm:rounded-2xl sm:border-white/[0.06] sm:bg-white/[0.03]",
         className
       )}
     >
       {(title || headerActions) && (
-        <div className="flex flex-col gap-4 border-b border-white/[0.06] px-7 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:px-5 sm:py-4">
+        <div className="flex flex-col gap-4 border-b border-white/[0.04] px-8 py-7 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:border-white/[0.06] sm:px-5 sm:py-4">
           <div>
             {title && (
-              <h2 className="text-2xl font-semibold leading-[1.2] text-white sm:text-sm sm:leading-normal">{title}</h2>
+              <h2 className="text-[1.7rem] font-semibold leading-[1.15] text-white sm:text-sm sm:leading-normal">{title}</h2>
             )}
             {description && (
-              <p className="mt-2 text-[17px] leading-[1.5] text-white/50 sm:mt-0.5 sm:text-xs sm:leading-normal sm:text-white/40">{description}</p>
+              <p className="mt-2.5 text-base leading-[1.5] text-white/42 sm:mt-0.5 sm:text-xs sm:leading-normal sm:text-white/40">{description}</p>
             )}
           </div>
           {headerActions && (
@@ -37,7 +37,7 @@ export function SectionCard({
           )}
         </div>
       )}
-      <div className="p-7 sm:p-5">{children}</div>
+      <div className="p-8 sm:p-5">{children}</div>
     </div>
   );
 }

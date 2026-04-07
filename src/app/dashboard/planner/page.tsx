@@ -119,12 +119,12 @@ function PostRow({
 
   return (
     <div
-      className={`group flex items-start gap-5 rounded-[1.35rem] border p-6 transition-all duration-300 sm:gap-4 sm:rounded-xl sm:p-4 ${
+      className={`group flex items-start gap-5 rounded-[1.5rem] border p-7 transition-all duration-300 sm:gap-4 sm:rounded-xl sm:p-4 ${
         highlighted
-          ? "border-purple-500/50 bg-purple-500/[0.07] shadow-lg shadow-purple-500/10"
+          ? "border-purple-500/35 bg-purple-500/[0.06] shadow-lg shadow-purple-500/10"
           : isFailed
-          ? "border-red-500/20 bg-red-500/[0.03] hover:border-red-500/30"
-          : "border-white/[0.05] bg-white/[0.02] hover:border-white/[0.09] hover:bg-white/[0.03]"
+          ? "border-red-500/15 bg-red-500/[0.025] hover:border-red-500/25"
+          : "border-white/[0.03] bg-white/[0.018] hover:border-white/[0.075] hover:bg-white/[0.03] sm:border-white/[0.05] sm:bg-white/[0.02] sm:hover:border-white/[0.09] sm:hover:bg-white/[0.03]"
       }`}
     >
       {/* Thumbnail */}
@@ -141,10 +141,10 @@ function PostRow({
         {/* Title row + action buttons */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <p className="truncate text-2xl font-semibold leading-[1.2] text-white/90 sm:text-sm sm:leading-normal">
+            <p className="truncate text-[1.65rem] font-semibold leading-[1.15] text-white/95 sm:text-sm sm:leading-normal sm:text-white/90">
               {post.title}
             </p>
-            <p className="mt-2.5 line-clamp-2 text-[17px] leading-[1.55] text-white/55 sm:mt-0.5 sm:text-xs sm:leading-normal sm:text-white/40">
+            <p className="mt-3 line-clamp-2 text-base leading-[1.55] text-white/40 sm:mt-0.5 sm:text-xs sm:leading-normal sm:text-white/40">
               {post.caption}
             </p>
           </div>
@@ -155,7 +155,7 @@ function PostRow({
               variant="ghost"
               size="sm"
               onClick={() => onEdit(post)}
-              className="h-12 rounded-xl px-5 text-base font-semibold text-white/55 hover:bg-white/[0.06] hover:text-white sm:h-7 sm:rounded-lg sm:px-2.5 sm:text-[11px] sm:font-medium sm:text-white/40"
+              className="h-12 rounded-xl px-5 text-base font-semibold text-white/48 hover:bg-white/[0.045] hover:text-white sm:h-7 sm:rounded-lg sm:px-2.5 sm:text-[11px] sm:font-medium sm:text-white/40 sm:hover:bg-white/[0.06]"
             >
               Edit
             </Button>
@@ -163,7 +163,7 @@ function PostRow({
               variant="ghost"
               size="sm"
               onClick={() => onDelete(post.id)}
-              className="h-12 w-12 rounded-xl p-0 text-rose-400/65 hover:bg-rose-500/[0.08] hover:text-rose-400 sm:h-7 sm:w-7 sm:rounded-lg sm:text-rose-400/50"
+              className="h-12 w-12 rounded-xl p-0 text-rose-400/55 hover:bg-rose-500/[0.07] hover:text-rose-400 sm:h-7 sm:w-7 sm:rounded-lg sm:text-rose-400/50 sm:hover:bg-rose-500/[0.08]"
             >
               <Trash2 className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
             </Button>
@@ -177,7 +177,7 @@ function PostRow({
             {post.tags.slice(0, 6).map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-cyan-500/20 bg-cyan-500/8 px-3.5 py-1.5 text-sm font-medium leading-[1.4] text-cyan-400/85 sm:px-2 sm:py-0.5 sm:text-[10px] sm:leading-normal sm:text-cyan-400/80"
+                className="rounded-full border border-cyan-500/15 bg-cyan-500/7 px-3.5 py-1.5 text-sm font-medium leading-[1.4] text-cyan-300/75 sm:border-cyan-500/20 sm:bg-cyan-500/8 sm:px-2 sm:py-0.5 sm:text-[10px] sm:leading-normal sm:text-cyan-400/80"
               >
                 {tag}
               </span>
@@ -461,7 +461,7 @@ export default function PlannerPage() {
         post={editingPost ?? undefined}
       />
 
-      <div className="flex flex-col gap-14 p-8 sm:gap-8 sm:p-6">
+      <div className="flex flex-col gap-16 p-9 sm:gap-8 sm:p-6">
         <PageHeader
           title="Content Planner"
           description="Manage all posts across Instagram, LinkedIn, and TikTok"
@@ -473,7 +473,7 @@ export default function PlannerPage() {
             <Button
               onClick={handleRunScheduler}
               disabled={schedulerRunning}
-              className="h-[58px] justify-center gap-2.5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-7 text-[17px] font-semibold text-emerald-400 transition hover:bg-emerald-500/20 disabled:opacity-50 sm:h-8 sm:gap-1.5 sm:rounded-lg sm:px-3 sm:text-xs sm:font-medium"
+              className="h-[58px] justify-center gap-2.5 rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.07] px-7 text-[17px] font-semibold text-emerald-300/90 transition hover:bg-emerald-500/15 disabled:opacity-50 sm:h-8 sm:gap-1.5 sm:rounded-lg sm:border-emerald-500/30 sm:bg-emerald-500/10 sm:px-3 sm:text-xs sm:font-medium sm:text-emerald-400 sm:hover:bg-emerald-500/20"
             >
               {schedulerRunning ? (
                 <Loader2 className="h-5 w-5 animate-spin sm:h-3.5 sm:w-3.5" />
@@ -486,7 +486,7 @@ export default function PlannerPage() {
             {/* New Post */}
             <Button
               onClick={handleNewPost}
-              className="h-[58px] justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 px-7 text-[17px] font-semibold text-white shadow-lg shadow-pink-500/30 transition hover:opacity-90 sm:h-8 sm:gap-1.5 sm:rounded-lg sm:px-3 sm:text-xs sm:font-medium"
+              className="h-[62px] justify-center gap-2.5 rounded-[1.35rem] bg-gradient-to-r from-pink-400 to-rose-500 px-8 text-lg font-semibold text-white shadow-xl shadow-pink-500/35 transition hover:opacity-95 sm:h-8 sm:gap-1.5 sm:rounded-lg sm:px-3 sm:text-xs sm:font-medium sm:shadow-lg sm:shadow-pink-500/20"
             >
               <Plus className="h-5 w-5 sm:h-3.5 sm:w-3.5" />
               New Post
@@ -495,7 +495,7 @@ export default function PlannerPage() {
         </PageHeader>
 
         {/* ── Status summary tiles ──────────────────────────────────────────── */}
-        <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-3">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-3">
           {TILE_STATUSES.map((s) => {
             const cfg    = PUBLISH_STATUS_STYLES[s];
             const Icon   = PUBLISH_STATUS_ICONS[s];
@@ -504,10 +504,10 @@ export default function PlannerPage() {
               <button
                 key={s}
                 onClick={() => setStatusFilter(active ? "all" : s)}
-                className={`flex min-h-28 items-center gap-4 rounded-[1.35rem] border px-6 py-6 text-left transition-all sm:min-h-0 sm:gap-3 sm:rounded-xl sm:px-4 sm:py-3 ${
+                className={`flex min-h-32 items-center gap-4 rounded-[1.5rem] border px-7 py-7 text-left transition-all sm:min-h-0 sm:gap-3 sm:rounded-xl sm:px-4 sm:py-3 ${
                   active
-                    ? "border-white/20 bg-white/[0.07]"
-                    : "border-white/[0.05] bg-white/[0.02] hover:border-white/[0.09]"
+                    ? "border-white/15 bg-white/[0.055] sm:border-white/20 sm:bg-white/[0.07]"
+                    : "border-white/[0.03] bg-white/[0.018] hover:border-white/[0.075] sm:border-white/[0.05] sm:bg-white/[0.02] sm:hover:border-white/[0.09]"
                 }`}
               >
                 <div
@@ -516,8 +516,8 @@ export default function PlannerPage() {
                   <Icon className="h-5 w-5 sm:h-3.5 sm:w-3.5" />
                 </div>
                 <div>
-                  <p className="text-[17px] leading-[1.45] text-white/55 sm:text-[10px] sm:leading-normal sm:text-white/40">{cfg.label}</p>
-                  <p className="text-[2.15rem] font-bold leading-[1.05] text-white sm:text-xl sm:leading-normal">{counts[s]}</p>
+                  <p className="text-sm font-medium uppercase leading-[1.45] tracking-wide text-white/35 sm:text-[10px] sm:font-normal sm:normal-case sm:leading-normal sm:tracking-normal sm:text-white/40">{cfg.label}</p>
+                  <p className="text-[2.65rem] font-bold leading-none text-white sm:text-xl sm:leading-normal">{counts[s]}</p>
                 </div>
               </button>
             );
@@ -548,7 +548,7 @@ export default function PlannerPage() {
           }
         >
           {/* Filter controls */}
-          <div className="mb-8 flex flex-wrap items-center gap-5 sm:mb-5 sm:gap-3">
+          <div className="mb-10 flex flex-wrap items-center gap-6 sm:mb-5 sm:gap-3">
             {/* Search */}
             <div className="relative min-w-48 flex-1">
               <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/30 sm:left-3 sm:h-3.5 sm:w-3.5 sm:text-white/25" />
@@ -556,12 +556,12 @@ export default function PlannerPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search title, caption, or tags…"
-                className="w-full rounded-2xl border border-white/[0.07] bg-white/[0.03] py-[18px] pl-12 pr-4 text-[17px] leading-[1.45] text-white placeholder:text-white/35 focus:border-white/20 focus:outline-none sm:rounded-lg sm:py-2 sm:pl-8 sm:text-xs sm:leading-normal sm:placeholder:text-white/25"
+                className="w-full rounded-[1.35rem] border border-white/[0.04] bg-white/[0.025] py-[18px] pl-12 pr-5 text-[17px] leading-[1.45] text-white placeholder:text-white/28 focus:border-white/15 focus:outline-none sm:rounded-lg sm:border-white/[0.07] sm:bg-white/[0.03] sm:py-2 sm:pl-8 sm:text-xs sm:leading-normal sm:placeholder:text-white/25 sm:focus:border-white/20"
               />
             </div>
 
             {/* Status filter pills */}
-            <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-2 sm:gap-1 sm:rounded-lg sm:p-1">
+            <div className="flex flex-wrap items-center gap-2 rounded-[1.35rem] border border-white/[0.035] bg-white/[0.018] p-2 sm:gap-1 sm:rounded-lg sm:border-white/[0.07] sm:bg-white/[0.02] sm:p-1">
               {(["all", "draft", "scheduled", "publishing", "published", "failed"] as FilterStatus[]).map(
                 (s) => (
                   <button
@@ -569,8 +569,8 @@ export default function PlannerPage() {
                     onClick={() => setStatusFilter(s)}
                     className={`min-h-11 rounded-xl px-4 py-2 text-sm font-semibold leading-[1.4] capitalize transition-all sm:min-h-0 sm:rounded-md sm:px-2.5 sm:py-1 sm:text-[11px] sm:font-medium sm:leading-normal ${
                       statusFilter === s
-                        ? "bg-white/[0.1] text-white"
-                        : "text-white/40 hover:text-white/60"
+                        ? "bg-white/[0.09] text-white sm:bg-white/[0.1]"
+                        : "text-white/34 hover:text-white/58 sm:text-white/40 sm:hover:text-white/60"
                     }`}
                   >
                     {s === "all"
@@ -582,15 +582,15 @@ export default function PlannerPage() {
             </div>
 
             {/* Platform filter pills */}
-            <div className="flex items-center gap-2 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-2 sm:gap-1 sm:rounded-lg sm:p-1">
+            <div className="flex items-center gap-2 rounded-[1.35rem] border border-white/[0.035] bg-white/[0.018] p-2 sm:gap-1 sm:rounded-lg sm:border-white/[0.07] sm:bg-white/[0.02] sm:p-1">
               {(["all", "instagram", "linkedin", "tiktok"] as FilterPlatform[]).map((p) => (
                 <button
                   key={p}
                   onClick={() => setPlatformFilter(p)}
                   className={`min-h-11 rounded-xl px-4 py-2 text-sm font-semibold leading-[1.4] capitalize transition-all sm:min-h-0 sm:rounded-md sm:px-3 sm:py-1 sm:text-[11px] sm:font-medium sm:leading-normal ${
                     platformFilter === p
-                      ? "bg-white/[0.1] text-white"
-                      : "text-white/40 hover:text-white/60"
+                      ? "bg-white/[0.09] text-white sm:bg-white/[0.1]"
+                      : "text-white/34 hover:text-white/58 sm:text-white/40 sm:hover:text-white/60"
                   }`}
                 >
                   {p}
@@ -600,7 +600,7 @@ export default function PlannerPage() {
           </div>
 
           {/* Post rows */}
-          <div className="flex flex-col gap-5 sm:gap-2">
+          <div className="flex flex-col gap-7 sm:gap-2">
             {filtered.length === 0 ? (
               <div className="flex flex-col items-center gap-4 py-16 text-center sm:gap-3 sm:py-14">
                 <LayoutGrid className="h-10 w-10 text-white/10 sm:h-8 sm:w-8" />

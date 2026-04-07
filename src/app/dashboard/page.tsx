@@ -102,21 +102,21 @@ export default function DashboardPage() {
         onClose={() => setModalOpen(false)}
       />
 
-      <div className="flex flex-col gap-14 p-8 sm:gap-8 sm:p-6">
+      <div className="flex flex-col gap-16 p-9 sm:gap-8 sm:p-6">
         {/* Header */}
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
           <div>
-            <div className="mb-2 flex items-center gap-2 sm:mb-1">
+            <div className="mb-3 flex items-center gap-2 sm:mb-1">
               <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/60 animate-pulse" />
-              <span className="text-base font-semibold leading-[1.45] text-white/55 sm:text-xs sm:font-medium sm:leading-normal sm:text-white/40">Live Dashboard</span>
+              <span className="text-sm font-semibold uppercase leading-[1.45] tracking-widest text-white/38 sm:text-xs sm:font-medium sm:normal-case sm:leading-normal sm:tracking-normal sm:text-white/40">Live Dashboard</span>
             </div>
-            <h1 className="text-[2.8rem] font-bold leading-[1.02] tracking-tight text-white sm:text-2xl sm:leading-normal">
+            <h1 className="text-[3.25rem] font-bold leading-[0.98] tracking-tight text-white sm:text-2xl sm:leading-normal">
               Good morning,{" "}
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                 AI Club
               </span>
             </h1>
-            <p className="mt-4 text-[19px] leading-[1.55] text-white/55 sm:mt-1 sm:text-sm sm:leading-normal sm:text-white/40">
+            <p className="mt-5 text-[17px] leading-[1.55] text-white/42 sm:mt-1 sm:text-sm sm:leading-normal sm:text-white/40">
               You have {reviewPosts.length} posts in review and {pendingIdeas.length} new ideas waiting.
             </p>
           </div>
@@ -124,7 +124,7 @@ export default function DashboardPage() {
           {/* ── New Post button ── */}
           <Button
             onClick={() => setModalOpen(true)}
-            className="min-h-[58px] rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 px-7 text-[17px] font-semibold text-white border-0 shadow-lg shadow-pink-500/30 transition-all hover:shadow-pink-500/40 hover:opacity-90 sm:min-h-0 sm:rounded-lg sm:px-2.5 sm:text-sm sm:font-medium"
+            className="min-h-[62px] rounded-[1.35rem] bg-gradient-to-r from-pink-400 to-rose-500 px-8 text-lg font-semibold text-white border-0 shadow-xl shadow-pink-500/35 transition-all hover:shadow-pink-500/45 hover:opacity-95 sm:min-h-0 sm:rounded-lg sm:px-2.5 sm:text-sm sm:font-medium sm:shadow-lg sm:shadow-pink-500/25"
           >
             <Plus className="mr-1.5 h-5 w-5 sm:h-4 sm:w-4" />
             New Post
@@ -132,7 +132,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           <StatCard
             title="Total Followers"
             value="12.4K"
@@ -172,53 +172,53 @@ export default function DashboardPage() {
         </div>
 
         {/* Pipeline status bar */}
-        <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-3">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-3">
           {[
-            { label: "Published", count: publishedPosts.length, icon: CheckCircle, color: "text-white/40", bg: "bg-white/[0.03]", border: "border-white/[0.05]" },
-            { label: "Scheduled", count: scheduledPosts.length, icon: Clock, color: "text-emerald-400", bg: "bg-emerald-500/[0.04]", border: "border-emerald-500/20" },
-            { label: "In Review", count: reviewPosts.length, icon: AlertCircle, color: "text-blue-400", bg: "bg-blue-500/[0.04]", border: "border-blue-500/20" },
-            { label: "Drafts", count: draftPosts.length, icon: PenLine, color: "text-yellow-400", bg: "bg-yellow-500/[0.04]", border: "border-yellow-500/20" },
+            { label: "Published", count: publishedPosts.length, icon: CheckCircle, color: "text-white/55", bg: "bg-white/[0.025]", border: "border-white/[0.035]" },
+            { label: "Scheduled", count: scheduledPosts.length, icon: Clock, color: "text-emerald-300", bg: "bg-emerald-500/[0.035]", border: "border-emerald-500/15" },
+            { label: "In Review", count: reviewPosts.length, icon: AlertCircle, color: "text-blue-300", bg: "bg-blue-500/[0.035]", border: "border-blue-500/15" },
+            { label: "Drafts", count: draftPosts.length, icon: PenLine, color: "text-yellow-300", bg: "bg-yellow-500/[0.035]", border: "border-yellow-500/15" },
           ].map(({ label, count, icon: Icon, color, bg, border }) => (
             <Link
               key={label}
               href="/dashboard/planner"
-              className={`flex min-h-28 items-center gap-4 rounded-[1.35rem] border ${border} ${bg} px-6 py-6 transition-all hover:brightness-110 sm:min-h-0 sm:gap-3 sm:rounded-xl sm:px-4 sm:py-3`}
+              className={`flex min-h-32 items-center gap-4 rounded-[1.5rem] border ${border} ${bg} px-7 py-7 transition-all hover:brightness-110 sm:min-h-0 sm:gap-3 sm:rounded-xl sm:px-4 sm:py-3`}
             >
               <Icon className={`h-5 w-5 sm:h-4 sm:w-4 ${color}`} />
               <div>
-                <p className="text-[17px] leading-[1.45] text-white/55 sm:text-xs sm:leading-normal sm:text-white/40">{label}</p>
-                <p className={`text-[2.15rem] font-bold leading-[1.05] sm:text-xl sm:leading-normal ${color}`}>{count}</p>
+                <p className="text-sm font-medium uppercase leading-[1.45] tracking-wide text-white/35 sm:text-xs sm:font-normal sm:normal-case sm:leading-normal sm:tracking-normal sm:text-white/40">{label}</p>
+                <p className={`text-[2.65rem] font-bold leading-none sm:text-xl sm:leading-normal ${color}`}>{count}</p>
               </div>
             </Link>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 gap-11 sm:gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-14 sm:gap-6 lg:grid-cols-3">
           {/* Quick Access */}
           <div className="lg:col-span-2">
             <SectionCard title="Quick Access" description="Jump to any section">
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-3">
+              <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-3">
                 {quickLinks.map((item) => {
                   const Icon = item.icon;
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="group flex min-h-28 items-center gap-5 rounded-[1.35rem] border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-200 hover:border-white/[0.1] hover:bg-white/[0.04] sm:min-h-0 sm:gap-3 sm:rounded-xl sm:p-4"
+                      className="group flex min-h-28 items-center gap-5 rounded-[1.5rem] border border-white/[0.03] bg-white/[0.018] p-7 transition-all duration-200 hover:border-white/[0.08] hover:bg-white/[0.035] sm:min-h-0 sm:gap-3 sm:rounded-xl sm:border-white/[0.06] sm:bg-white/[0.02] sm:p-4 sm:hover:border-white/[0.1] sm:hover:bg-white/[0.04]"
                     >
                       <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg sm:h-10 sm:w-10`}>
                         <Icon className="h-6 w-6 text-white sm:h-5 sm:w-5" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-xl font-semibold leading-[1.25] text-white sm:text-sm sm:font-medium sm:leading-normal">{item.title}</span>
+                          <span className="text-[1.35rem] font-semibold leading-[1.2] text-white sm:text-sm sm:font-medium sm:leading-normal">{item.title}</span>
                           {item.badge && (
-                            <Badge className="h-7 rounded-full bg-white/[0.08] px-2.5 text-sm text-white/65 sm:h-4 sm:px-1.5 sm:text-[10px] sm:text-white/50">
+                            <Badge className="h-7 rounded-full bg-white/[0.06] px-2.5 text-sm text-white/50 sm:h-4 sm:px-1.5 sm:text-[10px] sm:text-white/50">
                               {item.badge}
                             </Badge>
                           )}
                         </div>
-                        <p className="mt-2 truncate text-[17px] leading-[1.45] text-white/55 sm:mt-0.5 sm:text-xs sm:leading-normal sm:text-white/40">{item.description}</p>
+                        <p className="mt-2 truncate text-base leading-[1.5] text-white/38 sm:mt-0.5 sm:text-xs sm:leading-normal sm:text-white/40">{item.description}</p>
                       </div>
                       <ArrowRight className="h-3.5 w-3.5 text-white/20 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-white/40" />
                     </Link>
@@ -236,18 +236,18 @@ export default function DashboardPage() {
               <>
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="flex min-h-12 items-center gap-2 rounded-xl px-4 py-2 text-base font-medium text-white/55 transition-colors hover:bg-white/[0.05] hover:text-white/70 sm:min-h-0 sm:gap-1 sm:rounded-lg sm:px-2 sm:py-1 sm:text-xs sm:font-normal sm:text-white/30"
+                  className="flex min-h-12 items-center gap-2 rounded-xl px-4 py-2 text-base font-medium text-white/42 transition-colors hover:bg-white/[0.04] hover:text-white/70 sm:min-h-0 sm:gap-1 sm:rounded-lg sm:px-2 sm:py-1 sm:text-xs sm:font-normal sm:text-white/30"
                 >
                   <Plus className="h-4 w-4 sm:h-3 sm:w-3" />
                   Add
                 </button>
-                <Link href="/dashboard/planner" className="flex min-h-12 items-center rounded-xl px-3 text-base font-medium text-white/55 transition-colors hover:text-white sm:min-h-0 sm:rounded-none sm:px-0 sm:text-xs sm:font-normal sm:text-white/40">
+                <Link href="/dashboard/planner" className="flex min-h-12 items-center rounded-xl px-3 text-base font-medium text-white/42 transition-colors hover:text-white sm:min-h-0 sm:rounded-none sm:px-0 sm:text-xs sm:font-normal sm:text-white/40">
                   All →
                 </Link>
               </>
             }
           >
-            <div className="flex flex-col gap-5 sm:gap-3">
+            <div className="flex flex-col gap-6 sm:gap-3">
               {upcomingPosts.length === 0 ? (
                 <div className="flex flex-col items-center gap-5 py-12 text-center sm:gap-3 sm:py-8">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.03] sm:h-10 sm:w-10">
@@ -266,7 +266,7 @@ export default function DashboardPage() {
                 </div>
               ) : (
                 upcomingPosts.map((post) => (
-                  <div key={post.id} className="flex items-start gap-5 rounded-[1.35rem] border border-white/[0.05] bg-white/[0.02] p-5 sm:gap-3 sm:rounded-xl sm:p-3">
+                  <div key={post.id} className="flex items-start gap-5 rounded-[1.5rem] border border-white/[0.03] bg-white/[0.018] p-6 sm:gap-3 sm:rounded-xl sm:border-white/[0.05] sm:bg-white/[0.02] sm:p-3">
                     <div className={`h-10 w-10 shrink-0 rounded-lg bg-gradient-to-br ${post.thumbnail} flex items-center justify-center sm:h-8 sm:w-8`}>
                       <FileText className="h-[18px] w-[18px] text-white/70 sm:h-3.5 sm:w-3.5" />
                     </div>
@@ -283,7 +283,7 @@ export default function DashboardPage() {
                         ))}
                       </div>
                       {post.scheduledFor && (
-                        <p className="mt-2 text-sm text-white/40 sm:mt-1 sm:text-[10px] sm:text-white/30">
+                        <p className="mt-2 text-sm leading-[1.45] text-white/32 sm:mt-1 sm:text-[10px] sm:leading-normal sm:text-white/30">
                           <Clock className="mr-1 inline h-3.5 w-3.5 sm:mr-0.5 sm:h-2.5 sm:w-2.5" />
                           {new Date(post.scheduledFor).toLocaleDateString("en-US", {
                             month: "short",

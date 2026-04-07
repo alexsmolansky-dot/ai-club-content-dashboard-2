@@ -32,7 +32,7 @@ export function StatCard({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[1.35rem] border border-white/[0.06] bg-white/[0.03] p-7 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.1] hover:bg-white/[0.05] sm:rounded-2xl sm:p-5",
+        "relative overflow-hidden rounded-[1.5rem] border border-white/[0.035] bg-white/[0.025] p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.08] hover:bg-white/[0.04] sm:rounded-2xl sm:border-white/[0.06] sm:bg-white/[0.03] sm:p-5 sm:hover:border-white/[0.1] sm:hover:bg-white/[0.05]",
         className
       )}
     >
@@ -46,12 +46,12 @@ export function StatCard({
 
       <div className="flex items-start justify-between">
         <div className="flex flex-col gap-1.5 sm:gap-1">
-          <p className="text-base font-semibold uppercase leading-[1.45] tracking-wider text-white/50 sm:text-xs sm:font-medium sm:leading-normal sm:text-white/40">{title}</p>
-          <p className="text-[2.55rem] font-bold leading-[1.05] tracking-tight text-white sm:text-2xl sm:leading-normal">{value}</p>
+          <p className="text-[15px] font-semibold uppercase leading-[1.45] tracking-wider text-white/42 sm:text-xs sm:font-medium sm:leading-normal sm:text-white/40">{title}</p>
+          <p className="text-[3rem] font-bold leading-none tracking-tight text-white sm:text-2xl sm:leading-normal">{value}</p>
           {change && (
             <div
               className={cn(
-                "flex items-center gap-1.5 text-base font-medium leading-[1.45] sm:gap-1 sm:text-xs sm:leading-normal",
+                "flex items-center gap-1.5 text-[15px] font-medium leading-[1.45] sm:gap-1 sm:text-xs sm:leading-normal",
                 changeType === "positive"
                   ? "text-emerald-400"
                   : changeType === "negative"
@@ -61,7 +61,7 @@ export function StatCard({
             >
               <TrendIcon className="h-4 w-4 sm:h-3 sm:w-3" />
               <span>{change}</span>
-              {description && <span className="text-white/30 font-normal">{description}</span>}
+              {description && <span className="text-white/24 font-normal sm:text-white/30">{description}</span>}
             </div>
           )}
         </div>
