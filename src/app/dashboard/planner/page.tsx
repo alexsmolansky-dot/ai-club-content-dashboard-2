@@ -119,7 +119,7 @@ function PostRow({
 
   return (
     <div
-      className={`group flex items-start gap-4 rounded-xl border p-5 transition-all duration-300 sm:p-4 ${
+      className={`group flex items-start gap-5 rounded-[1.35rem] border p-6 transition-all duration-300 sm:gap-4 sm:rounded-xl sm:p-4 ${
         highlighted
           ? "border-purple-500/50 bg-purple-500/[0.07] shadow-lg shadow-purple-500/10"
           : isFailed
@@ -129,11 +129,11 @@ function PostRow({
     >
       {/* Thumbnail */}
       <div
-        className={`h-14 w-14 shrink-0 rounded-xl bg-gradient-to-br sm:h-12 sm:w-12 ${
+        className={`h-16 w-16 shrink-0 rounded-2xl bg-gradient-to-br sm:h-12 sm:w-12 sm:rounded-xl ${
           post.thumbnail || GRADIENT_CYCLE[index % GRADIENT_CYCLE.length]
         } flex items-center justify-center`}
       >
-        <FormatIcon className="h-6 w-6 text-white/60 sm:h-5 sm:w-5" />
+        <FormatIcon className="h-7 w-7 text-white/60 sm:h-5 sm:w-5" />
       </div>
 
       {/* Main content */}
@@ -141,10 +141,10 @@ function PostRow({
         {/* Title row + action buttons */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <p className="truncate text-xl font-semibold leading-tight text-white/90 sm:text-sm sm:leading-normal">
+            <p className="truncate text-2xl font-semibold leading-[1.2] text-white/90 sm:text-sm sm:leading-normal">
               {post.title}
             </p>
-            <p className="mt-2 line-clamp-2 text-base leading-relaxed text-white/50 sm:mt-0.5 sm:text-xs sm:text-white/40">
+            <p className="mt-2.5 line-clamp-2 text-[17px] leading-[1.55] text-white/55 sm:mt-0.5 sm:text-xs sm:leading-normal sm:text-white/40">
               {post.caption}
             </p>
           </div>
@@ -155,7 +155,7 @@ function PostRow({
               variant="ghost"
               size="sm"
               onClick={() => onEdit(post)}
-              className="h-11 px-4 text-base text-white/55 hover:bg-white/[0.06] hover:text-white sm:h-7 sm:px-2.5 sm:text-[11px] sm:text-white/40"
+              className="h-12 rounded-xl px-5 text-base font-semibold text-white/55 hover:bg-white/[0.06] hover:text-white sm:h-7 sm:rounded-lg sm:px-2.5 sm:text-[11px] sm:font-medium sm:text-white/40"
             >
               Edit
             </Button>
@@ -163,7 +163,7 @@ function PostRow({
               variant="ghost"
               size="sm"
               onClick={() => onDelete(post.id)}
-              className="h-11 w-11 p-0 text-rose-400/65 hover:bg-rose-500/[0.08] hover:text-rose-400 sm:h-7 sm:w-7 sm:text-rose-400/50"
+              className="h-12 w-12 rounded-xl p-0 text-rose-400/65 hover:bg-rose-500/[0.08] hover:text-rose-400 sm:h-7 sm:w-7 sm:rounded-lg sm:text-rose-400/50"
             >
               <Trash2 className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
             </Button>
@@ -177,7 +177,7 @@ function PostRow({
             {post.tags.slice(0, 6).map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-cyan-500/20 bg-cyan-500/8 px-3 py-1.5 text-sm font-medium text-cyan-400/85 sm:px-2 sm:py-0.5 sm:text-[10px] sm:text-cyan-400/80"
+                className="rounded-full border border-cyan-500/20 bg-cyan-500/8 px-3.5 py-1.5 text-sm font-medium leading-[1.4] text-cyan-400/85 sm:px-2 sm:py-0.5 sm:text-[10px] sm:leading-normal sm:text-cyan-400/80"
               >
                 {tag}
               </span>
@@ -194,7 +194,7 @@ function PostRow({
         {isFailed && post.publishError && (
           <div className="mt-3 flex items-start gap-2 rounded-lg border border-red-500/20 bg-red-500/[0.06] px-4 py-3 sm:mt-2 sm:gap-1.5 sm:px-3 sm:py-2">
             <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-400 sm:h-3 sm:w-3" />
-            <p className="text-sm leading-relaxed text-red-300/85 sm:text-[10px] sm:leading-snug sm:text-red-300/80">
+            <p className="text-sm leading-[1.55] text-red-300/85 sm:text-[10px] sm:leading-snug sm:text-red-300/80">
               {post.publishError}
             </p>
           </div>
@@ -204,7 +204,7 @@ function PostRow({
         <div className="mt-3 flex flex-wrap items-center gap-2.5 sm:mt-2 sm:gap-2">
           {/* Publish status badge */}
           <Badge
-            className={`flex h-8 items-center gap-1.5 rounded-full px-3 text-sm font-medium sm:h-5 sm:gap-1 sm:px-2 sm:text-[10px] ${publishStyle.badge}`}
+            className={`flex h-9 items-center gap-1.5 rounded-full px-3.5 text-sm font-medium leading-[1.4] sm:h-5 sm:gap-1 sm:px-2 sm:text-[10px] sm:leading-normal ${publishStyle.badge}`}
           >
             <StatusIcon
               className={`h-3.5 w-3.5 sm:h-2.5 sm:w-2.5 ${isPublishing ? "animate-spin" : ""}`}
@@ -214,7 +214,7 @@ function PostRow({
 
           {/* Pillar */}
           <Badge
-            className={`h-8 rounded-full px-3 text-sm font-medium sm:h-5 sm:px-2 sm:text-[10px] ${PILLAR_BADGE_COLORS[post.pillar]}`}
+            className={`h-9 rounded-full px-3.5 text-sm font-medium leading-[1.4] sm:h-5 sm:px-2 sm:text-[10px] sm:leading-normal ${PILLAR_BADGE_COLORS[post.pillar]}`}
           >
             {post.pillar.replace(/-/g, " ")}
           </Badge>
@@ -223,7 +223,7 @@ function PostRow({
           {post.platform.map((p) => (
             <Badge
               key={p}
-              className={`flex h-8 items-center gap-1.5 rounded-full px-3 text-sm font-medium sm:h-5 sm:gap-1 sm:px-2 sm:text-[10px] ${PLATFORM_BADGE[p]}`}
+              className={`flex h-9 items-center gap-1.5 rounded-full px-3.5 text-sm font-medium leading-[1.4] sm:h-5 sm:gap-1 sm:px-2 sm:text-[10px] sm:leading-normal ${PLATFORM_BADGE[p]}`}
             >
               {p === "instagram" && <Camera className="h-3.5 w-3.5 sm:h-2.5 sm:w-2.5" />}
               {p === "linkedin"  && <BriefcaseIcon className="h-3.5 w-3.5 sm:h-2.5 sm:w-2.5" />}
@@ -233,7 +233,7 @@ function PostRow({
 
           {/* Scheduled time */}
           {isScheduled && post.scheduledFor && (
-            <span className="flex items-center gap-1.5 text-sm text-emerald-400/75 sm:gap-1 sm:text-[10px] sm:text-emerald-400/60">
+            <span className="flex items-center gap-1.5 text-sm leading-[1.45] text-emerald-400/75 sm:gap-1 sm:text-[10px] sm:leading-normal sm:text-emerald-400/60">
               <Clock className="h-3.5 w-3.5 sm:h-2.5 sm:w-2.5" />
               {formatDate(post.scheduledFor)}
             </span>
@@ -241,7 +241,7 @@ function PostRow({
 
           {/* Published at */}
           {post.publishStatus === "published" && post.publishedAt && (
-            <span className="flex items-center gap-1.5 text-sm text-purple-400/65 sm:gap-1 sm:text-[10px] sm:text-purple-400/50">
+            <span className="flex items-center gap-1.5 text-sm leading-[1.45] text-purple-400/65 sm:gap-1 sm:text-[10px] sm:leading-normal sm:text-purple-400/50">
               <CheckCircle2 className="h-3.5 w-3.5 sm:h-2.5 sm:w-2.5" />
               Published {formatRelativeDate(post.publishedAt)}
             </span>
@@ -461,7 +461,7 @@ export default function PlannerPage() {
         post={editingPost ?? undefined}
       />
 
-      <div className="flex flex-col gap-11 p-7 sm:gap-8 sm:p-6">
+      <div className="flex flex-col gap-14 p-8 sm:gap-8 sm:p-6">
         <PageHeader
           title="Content Planner"
           description="Manage all posts across Instagram, LinkedIn, and TikTok"
@@ -473,7 +473,7 @@ export default function PlannerPage() {
             <Button
               onClick={handleRunScheduler}
               disabled={schedulerRunning}
-              className="h-14 justify-center gap-2.5 border border-emerald-500/30 bg-emerald-500/10 px-6 text-base font-semibold text-emerald-400 transition hover:bg-emerald-500/20 disabled:opacity-50 sm:h-8 sm:gap-1.5 sm:px-3 sm:text-xs sm:font-medium"
+              className="h-[58px] justify-center gap-2.5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-7 text-[17px] font-semibold text-emerald-400 transition hover:bg-emerald-500/20 disabled:opacity-50 sm:h-8 sm:gap-1.5 sm:rounded-lg sm:px-3 sm:text-xs sm:font-medium"
             >
               {schedulerRunning ? (
                 <Loader2 className="h-5 w-5 animate-spin sm:h-3.5 sm:w-3.5" />
@@ -486,7 +486,7 @@ export default function PlannerPage() {
             {/* New Post */}
             <Button
               onClick={handleNewPost}
-              className="h-14 justify-center gap-2.5 bg-gradient-to-r from-pink-500 to-rose-500 px-6 text-base font-semibold text-white shadow-lg shadow-pink-500/20 transition hover:opacity-90 sm:h-8 sm:gap-1.5 sm:px-3 sm:text-xs sm:font-medium"
+              className="h-[58px] justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 px-7 text-[17px] font-semibold text-white shadow-lg shadow-pink-500/30 transition hover:opacity-90 sm:h-8 sm:gap-1.5 sm:rounded-lg sm:px-3 sm:text-xs sm:font-medium"
             >
               <Plus className="h-5 w-5 sm:h-3.5 sm:w-3.5" />
               New Post
@@ -495,7 +495,7 @@ export default function PlannerPage() {
         </PageHeader>
 
         {/* ── Status summary tiles ──────────────────────────────────────────── */}
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-3">
+        <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-3">
           {TILE_STATUSES.map((s) => {
             const cfg    = PUBLISH_STATUS_STYLES[s];
             const Icon   = PUBLISH_STATUS_ICONS[s];
@@ -504,7 +504,7 @@ export default function PlannerPage() {
               <button
                 key={s}
                 onClick={() => setStatusFilter(active ? "all" : s)}
-                className={`flex min-h-24 items-center gap-4 rounded-xl border px-5 py-5 text-left transition-all sm:min-h-0 sm:gap-3 sm:px-4 sm:py-3 ${
+                className={`flex min-h-28 items-center gap-4 rounded-[1.35rem] border px-6 py-6 text-left transition-all sm:min-h-0 sm:gap-3 sm:rounded-xl sm:px-4 sm:py-3 ${
                   active
                     ? "border-white/20 bg-white/[0.07]"
                     : "border-white/[0.05] bg-white/[0.02] hover:border-white/[0.09]"
@@ -516,8 +516,8 @@ export default function PlannerPage() {
                   <Icon className="h-5 w-5 sm:h-3.5 sm:w-3.5" />
                 </div>
                 <div>
-                  <p className="text-base text-white/50 sm:text-[10px] sm:text-white/40">{cfg.label}</p>
-                  <p className="text-3xl font-bold text-white sm:text-xl">{counts[s]}</p>
+                  <p className="text-[17px] leading-[1.45] text-white/55 sm:text-[10px] sm:leading-normal sm:text-white/40">{cfg.label}</p>
+                  <p className="text-[2.15rem] font-bold leading-[1.05] text-white sm:text-xl sm:leading-normal">{counts[s]}</p>
                 </div>
               </button>
             );
@@ -548,7 +548,7 @@ export default function PlannerPage() {
           }
         >
           {/* Filter controls */}
-          <div className="mb-6 flex flex-wrap items-center gap-4 sm:mb-5 sm:gap-3">
+          <div className="mb-8 flex flex-wrap items-center gap-5 sm:mb-5 sm:gap-3">
             {/* Search */}
             <div className="relative min-w-48 flex-1">
               <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/30 sm:left-3 sm:h-3.5 sm:w-3.5 sm:text-white/25" />
@@ -556,18 +556,18 @@ export default function PlannerPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search title, caption, or tags…"
-                className="w-full rounded-xl border border-white/[0.07] bg-white/[0.03] py-4 pl-12 pr-4 text-base text-white placeholder:text-white/35 focus:border-white/20 focus:outline-none sm:rounded-lg sm:py-2 sm:pl-8 sm:text-xs sm:placeholder:text-white/25"
+                className="w-full rounded-2xl border border-white/[0.07] bg-white/[0.03] py-[18px] pl-12 pr-4 text-[17px] leading-[1.45] text-white placeholder:text-white/35 focus:border-white/20 focus:outline-none sm:rounded-lg sm:py-2 sm:pl-8 sm:text-xs sm:leading-normal sm:placeholder:text-white/25"
               />
             </div>
 
             {/* Status filter pills */}
-            <div className="flex flex-wrap items-center gap-1.5 rounded-xl border border-white/[0.07] bg-white/[0.02] p-1.5 sm:gap-1 sm:rounded-lg sm:p-1">
+            <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-2 sm:gap-1 sm:rounded-lg sm:p-1">
               {(["all", "draft", "scheduled", "publishing", "published", "failed"] as FilterStatus[]).map(
                 (s) => (
                   <button
                     key={s}
                     onClick={() => setStatusFilter(s)}
-                    className={`min-h-10 rounded-lg px-4 py-2 text-sm font-semibold capitalize transition-all sm:min-h-0 sm:rounded-md sm:px-2.5 sm:py-1 sm:text-[11px] sm:font-medium ${
+                    className={`min-h-11 rounded-xl px-4 py-2 text-sm font-semibold leading-[1.4] capitalize transition-all sm:min-h-0 sm:rounded-md sm:px-2.5 sm:py-1 sm:text-[11px] sm:font-medium sm:leading-normal ${
                       statusFilter === s
                         ? "bg-white/[0.1] text-white"
                         : "text-white/40 hover:text-white/60"
@@ -582,12 +582,12 @@ export default function PlannerPage() {
             </div>
 
             {/* Platform filter pills */}
-            <div className="flex items-center gap-1.5 rounded-xl border border-white/[0.07] bg-white/[0.02] p-1.5 sm:gap-1 sm:rounded-lg sm:p-1">
+            <div className="flex items-center gap-2 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-2 sm:gap-1 sm:rounded-lg sm:p-1">
               {(["all", "instagram", "linkedin", "tiktok"] as FilterPlatform[]).map((p) => (
                 <button
                   key={p}
                   onClick={() => setPlatformFilter(p)}
-                  className={`min-h-10 rounded-lg px-4 py-2 text-sm font-semibold capitalize transition-all sm:min-h-0 sm:rounded-md sm:px-3 sm:py-1 sm:text-[11px] sm:font-medium ${
+                  className={`min-h-11 rounded-xl px-4 py-2 text-sm font-semibold leading-[1.4] capitalize transition-all sm:min-h-0 sm:rounded-md sm:px-3 sm:py-1 sm:text-[11px] sm:font-medium sm:leading-normal ${
                     platformFilter === p
                       ? "bg-white/[0.1] text-white"
                       : "text-white/40 hover:text-white/60"
@@ -600,7 +600,7 @@ export default function PlannerPage() {
           </div>
 
           {/* Post rows */}
-          <div className="flex flex-col gap-3 sm:gap-2">
+          <div className="flex flex-col gap-5 sm:gap-2">
             {filtered.length === 0 ? (
               <div className="flex flex-col items-center gap-4 py-16 text-center sm:gap-3 sm:py-14">
                 <LayoutGrid className="h-10 w-10 text-white/10 sm:h-8 sm:w-8" />

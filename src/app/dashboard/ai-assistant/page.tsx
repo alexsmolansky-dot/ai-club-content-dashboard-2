@@ -118,7 +118,7 @@ export default function AiAssistantPage() {
   const canSave = !!result && !saving && !generating;
 
   return (
-    <div className="flex flex-col gap-11 p-7 sm:gap-8 sm:p-6">
+    <div className="flex flex-col gap-14 p-8 sm:gap-8 sm:p-6">
       <PageHeader
         title="AI Template Generator"
         description="Generate AI Tool of the Week posts in seconds"
@@ -126,14 +126,14 @@ export default function AiAssistantPage() {
         iconGradient="from-violet-500 to-purple-400"
       />
 
-      <div className="grid grid-cols-1 gap-9 sm:gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-11 sm:gap-6 lg:grid-cols-2">
         {/* ── Input panel ─────────────────────────────────────────────────── */}
         <SectionCard title="Generate Post" description="Fill in the details below">
-          <div className="flex flex-col gap-7 sm:gap-5">
+          <div className="flex flex-col gap-8 sm:gap-5">
 
             {/* Topic */}
-            <div className="flex flex-col gap-2.5 sm:gap-1.5">
-              <label className="text-sm font-semibold uppercase tracking-widest text-white/50 sm:text-xs sm:text-white/40">
+            <div className="flex flex-col gap-3 sm:gap-1.5">
+              <label className="text-sm font-semibold uppercase leading-[1.45] tracking-widest text-white/50 sm:text-xs sm:leading-normal sm:text-white/40">
                 Tool / Topic <span className="text-purple-400">*</span>
               </label>
               <input
@@ -143,13 +143,13 @@ export default function AiAssistantPage() {
                 onKeyDown={(e) => e.key === "Enter" && canGenerate && handleGenerate()}
                 placeholder="e.g. ChatGPT, Midjourney, Perplexity…"
                 disabled={generating}
-                className="w-full rounded-xl border border-white/[0.08] bg-white/[0.04] px-5 py-4 text-lg text-white placeholder-white/30 outline-none transition focus:border-purple-500/50 focus:bg-white/[0.06] focus:ring-1 focus:ring-purple-500/30 disabled:opacity-50 sm:px-4 sm:py-3 sm:text-sm sm:placeholder-white/25"
+                className="w-full rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-[18px] text-lg leading-[1.45] text-white placeholder-white/30 outline-none transition focus:border-purple-500/50 focus:bg-white/[0.06] focus:ring-1 focus:ring-purple-500/30 disabled:opacity-50 sm:rounded-xl sm:px-4 sm:py-3 sm:text-sm sm:leading-normal sm:placeholder-white/25"
               />
             </div>
 
             {/* Language */}
-            <div className="flex flex-col gap-2.5 sm:gap-1.5">
-              <label className="text-sm font-semibold uppercase tracking-widest text-white/50 sm:text-xs sm:text-white/40">
+            <div className="flex flex-col gap-3 sm:gap-1.5">
+              <label className="text-sm font-semibold uppercase leading-[1.45] tracking-widest text-white/50 sm:text-xs sm:leading-normal sm:text-white/40">
                 Output Language
               </label>
               <div className="relative">
@@ -157,7 +157,7 @@ export default function AiAssistantPage() {
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
                   disabled={generating}
-                  className="w-full appearance-none rounded-xl border border-white/[0.08] bg-white/[0.04] px-5 py-4 pr-12 text-lg text-white outline-none transition focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/30 disabled:opacity-50 sm:px-4 sm:py-3 sm:pr-10 sm:text-sm"
+                  className="w-full appearance-none rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-[18px] pr-12 text-lg leading-[1.45] text-white outline-none transition focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/30 disabled:opacity-50 sm:rounded-xl sm:px-4 sm:py-3 sm:pr-10 sm:text-sm sm:leading-normal"
                 >
                   {LANGUAGE_OPTIONS.map((opt) => (
                     <option key={opt.value} value={opt.value} className="bg-[#1a1a2e]">
@@ -170,8 +170,8 @@ export default function AiAssistantPage() {
             </div>
 
             {/* Tone */}
-            <div className="flex flex-col gap-2.5 sm:gap-1.5">
-              <label className="text-sm font-semibold uppercase tracking-widest text-white/50 sm:text-xs sm:text-white/40">
+            <div className="flex flex-col gap-3 sm:gap-1.5">
+              <label className="text-sm font-semibold uppercase leading-[1.45] tracking-widest text-white/50 sm:text-xs sm:leading-normal sm:text-white/40">
                 Tone
               </label>
               <div className="relative">
@@ -179,7 +179,7 @@ export default function AiAssistantPage() {
                   value={tone}
                   onChange={(e) => setTone(e.target.value)}
                   disabled={generating}
-                  className="w-full appearance-none rounded-xl border border-white/[0.08] bg-white/[0.04] px-5 py-4 pr-12 text-lg text-white outline-none transition focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/30 disabled:opacity-50 sm:px-4 sm:py-3 sm:pr-10 sm:text-sm"
+                  className="w-full appearance-none rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-[18px] pr-12 text-lg leading-[1.45] text-white outline-none transition focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/30 disabled:opacity-50 sm:rounded-xl sm:px-4 sm:py-3 sm:pr-10 sm:text-sm sm:leading-normal"
                 >
                   {TONE_OPTIONS.map((opt) => (
                     <option key={opt.value} value={opt.value} className="bg-[#1a1a2e]">
@@ -192,11 +192,11 @@ export default function AiAssistantPage() {
             </div>
 
             {/* Actions */}
-            <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center">
+            <div className="flex flex-col gap-4 pt-1 sm:flex-row sm:items-center sm:gap-3">
               <Button
                 onClick={handleGenerate}
                 disabled={!canGenerate}
-                className="flex-1 gap-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 py-3 text-base font-semibold text-white shadow-lg shadow-purple-500/20 transition hover:from-violet-500 hover:to-purple-500 disabled:cursor-not-allowed disabled:opacity-50 sm:gap-2 sm:py-2.5 sm:text-sm"
+                className="min-h-[58px] flex-1 gap-2.5 rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 px-7 py-3 text-[17px] font-semibold text-white shadow-lg shadow-purple-500/30 transition hover:from-violet-500 hover:to-purple-500 disabled:cursor-not-allowed disabled:opacity-50 sm:min-h-0 sm:gap-2 sm:rounded-xl sm:px-2.5 sm:py-2.5 sm:text-sm"
               >
                 {generating ? (
                   <>
@@ -221,7 +221,7 @@ export default function AiAssistantPage() {
                   onClick={handleSaveDraft}
                   disabled={!canSave}
                   variant="outline"
-                  className="gap-2.5 rounded-xl border-white/[0.1] bg-white/[0.04] py-3 text-base font-semibold text-white/80 transition hover:bg-white/[0.08] hover:text-white disabled:cursor-not-allowed disabled:opacity-50 sm:gap-2 sm:py-2.5 sm:text-sm"
+                  className="min-h-[58px] gap-2.5 rounded-2xl border-white/[0.1] bg-white/[0.04] px-7 py-3 text-[17px] font-semibold text-white/80 transition hover:bg-white/[0.08] hover:text-white disabled:cursor-not-allowed disabled:opacity-50 sm:min-h-0 sm:gap-2 sm:rounded-xl sm:px-2.5 sm:py-2.5 sm:text-sm"
                 >
                   {saving ? (
                     <Loader2 className="h-5 w-5 animate-spin sm:h-4 sm:w-4" />
@@ -243,7 +243,7 @@ export default function AiAssistantPage() {
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-purple-500/20 bg-purple-500/10">
                 <Sparkles className="h-6 w-6 animate-pulse text-purple-400" />
               </div>
-              <p className="text-base text-white/45 sm:text-sm sm:text-white/40">Crafting your post…</p>
+              <p className="text-lg leading-[1.5] text-white/45 sm:text-sm sm:leading-normal sm:text-white/40">Crafting your post…</p>
             </div>
           )}
 
@@ -264,8 +264,8 @@ export default function AiAssistantPage() {
                 <Wand2 className="h-6 w-6 text-white/20" />
               </div>
               <div>
-                <p className="text-base font-medium text-white/40 sm:text-sm sm:text-white/35">Preview appears here</p>
-                <p className="mt-1.5 text-sm text-white/25 sm:mt-1 sm:text-xs sm:text-white/20">
+                <p className="text-lg font-medium leading-[1.4] text-white/40 sm:text-sm sm:leading-normal sm:text-white/35">Preview appears here</p>
+                <p className="mt-2 text-base leading-[1.5] text-white/25 sm:mt-1 sm:text-xs sm:leading-normal sm:text-white/20">
                   Enter a tool name and click Generate
                 </p>
               </div>
@@ -282,7 +282,7 @@ export default function AiAssistantPage() {
         title="About this Template"
         description="AI Tool of the Week — fixed Instagram template"
       >
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-4 sm:gap-4">
           {[
             { label: "Template", value: "AI Tool of the Week" },
             { label: "Format", value: "Image post" },
@@ -291,12 +291,12 @@ export default function AiAssistantPage() {
           ].map(({ label, value }) => (
             <div
               key={label}
-              className="flex flex-col gap-1.5 rounded-xl border border-white/[0.06] bg-white/[0.02] px-5 py-4 sm:gap-1 sm:px-4 sm:py-3"
+              className="flex flex-col gap-2 rounded-[1.35rem] border border-white/[0.06] bg-white/[0.02] px-6 py-5 sm:gap-1 sm:rounded-xl sm:px-4 sm:py-3"
             >
-              <span className="text-xs font-semibold uppercase tracking-widest text-white/35 sm:text-[10px] sm:text-white/30">
+              <span className="text-xs font-semibold uppercase leading-[1.45] tracking-widest text-white/35 sm:text-[10px] sm:leading-normal sm:text-white/30">
                 {label}
               </span>
-              <span className="text-base font-medium text-white/75 sm:text-sm sm:text-white/70">{value}</span>
+              <span className="text-lg font-medium leading-[1.4] text-white/75 sm:text-sm sm:leading-normal sm:text-white/70">{value}</span>
             </div>
           ))}
         </div>

@@ -64,19 +64,19 @@ export function Sidebar({ mobileOpen = false, onNavigate }: SidebarProps) {
       )}
     >
       {/* Logo */}
-      <div className="flex h-24 items-center gap-4 border-b border-white/[0.06] px-6 sm:h-16 sm:gap-3 sm:px-5">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 shadow-lg shadow-purple-500/30 sm:h-8 sm:w-8 sm:rounded-lg">
+      <div className="flex h-28 items-center gap-4 border-b border-white/[0.06] px-6 sm:h-16 sm:gap-3 sm:px-5">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 shadow-lg shadow-purple-500/30 sm:h-8 sm:w-8 sm:rounded-lg">
           <Zap className="h-5 w-5 text-white sm:h-4 sm:w-4" />
         </div>
         <div className="flex flex-col">
-          <span className="text-xl font-semibold leading-none text-white sm:text-sm">AI Club</span>
-          <span className="mt-1.5 text-sm leading-none text-white/45 sm:mt-0.5 sm:text-[10px] sm:text-white/40">Content Dashboard</span>
+          <span className="text-2xl font-semibold leading-[1.15] text-white sm:text-sm sm:leading-none">AI Club</span>
+          <span className="mt-1.5 text-base leading-[1.3] text-white/45 sm:mt-0.5 sm:text-[10px] sm:leading-none sm:text-white/40">Content Dashboard</span>
         </div>
       </div>
 
       {/* Nav */}
-      <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 py-6 sm:gap-1 sm:px-3 sm:py-4">
-        <p className="mb-2 px-2 text-sm font-semibold uppercase tracking-widest text-white/40 sm:text-[10px] sm:text-white/25">
+      <nav className="flex flex-1 flex-col gap-4 overflow-y-auto px-4 py-7 sm:gap-1 sm:px-3 sm:py-4">
+        <p className="mb-2 px-2 text-sm font-semibold uppercase leading-[1.4] tracking-widest text-white/40 sm:text-[10px] sm:leading-normal sm:text-white/25">
           Workspace
         </p>
         {navItems.map((item) => {
@@ -88,7 +88,7 @@ export function Sidebar({ mobileOpen = false, onNavigate }: SidebarProps) {
               href={item.href}
               onClick={onNavigate}
               className={cn(
-                "group flex min-h-14 items-center gap-4 rounded-xl px-4 py-3.5 text-lg font-semibold transition-all duration-200 sm:min-h-0 sm:gap-3 sm:px-3 sm:py-2.5 sm:text-sm sm:font-medium",
+                "group flex min-h-16 items-center gap-4 rounded-2xl px-5 py-4 text-xl font-semibold leading-[1.35] transition-all duration-200 sm:min-h-0 sm:gap-3 sm:rounded-xl sm:px-3 sm:py-2.5 sm:text-sm sm:font-medium sm:leading-normal",
                 isActive
                   ? "bg-white/[0.08] text-white"
                   : "text-white/50 hover:bg-white/[0.04] hover:text-white/80"
@@ -96,12 +96,12 @@ export function Sidebar({ mobileOpen = false, onNavigate }: SidebarProps) {
             >
               <div
                 className={cn(
-                  "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br transition-all duration-200 sm:h-7 sm:w-7",
+                  "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br transition-all duration-200 sm:h-7 sm:w-7 sm:rounded-lg",
                   item.gradient,
                   isActive ? "opacity-100 shadow-lg" : "opacity-50 group-hover:opacity-75"
                 )}
               >
-                <Icon className="h-[18px] w-[18px] text-white sm:h-3.5 sm:w-3.5" />
+                <Icon className="h-5 w-5 text-white sm:h-3.5 sm:w-3.5" />
               </div>
               <span className="flex-1">{item.label}</span>
               {item.badge && (
@@ -121,7 +121,7 @@ export function Sidebar({ mobileOpen = false, onNavigate }: SidebarProps) {
         })}
 
         <div className="mt-auto pt-4">
-          <p className="mb-2 px-2 text-sm font-semibold uppercase tracking-widest text-white/40 sm:text-[10px] sm:text-white/25">
+          <p className="mb-2 px-2 text-sm font-semibold uppercase leading-[1.4] tracking-widest text-white/40 sm:text-[10px] sm:leading-normal sm:text-white/25">
             System
           </p>
           {bottomItems.map((item) => {
@@ -133,7 +133,7 @@ export function Sidebar({ mobileOpen = false, onNavigate }: SidebarProps) {
                 href={item.href}
                 onClick={onNavigate}
                 className={cn(
-                  "flex min-h-14 items-center gap-4 rounded-xl px-4 py-3.5 text-lg font-semibold transition-all duration-200 sm:min-h-0 sm:gap-3 sm:px-3 sm:py-2.5 sm:text-sm sm:font-medium",
+                  "flex min-h-16 items-center gap-4 rounded-2xl px-5 py-4 text-xl font-semibold leading-[1.35] transition-all duration-200 sm:min-h-0 sm:gap-3 sm:rounded-xl sm:px-3 sm:py-2.5 sm:text-sm sm:font-medium sm:leading-normal",
                   isActive
                     ? "bg-white/[0.08] text-white"
                     : "text-white/40 hover:bg-white/[0.04] hover:text-white/60"
@@ -149,13 +149,13 @@ export function Sidebar({ mobileOpen = false, onNavigate }: SidebarProps) {
 
       {/* User footer */}
       <div className="border-t border-white/[0.06] px-4 py-4 sm:px-3 sm:py-3">
-        <div className="flex cursor-pointer items-center gap-3 rounded-xl px-4 py-3 transition-colors hover:bg-white/[0.04] sm:px-3 sm:py-2.5">
+        <div className="flex cursor-pointer items-center gap-4 rounded-2xl px-4 py-4 transition-colors hover:bg-white/[0.04] sm:gap-3 sm:rounded-xl sm:px-3 sm:py-2.5">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-500 text-sm font-bold text-white sm:h-8 sm:w-8 sm:text-xs">
             AC
           </div>
           <div className="flex flex-col min-w-0">
-            <span className="truncate text-base font-medium text-white sm:text-xs">AI Club</span>
-            <span className="truncate text-xs text-white/40 sm:text-[10px]">Admin</span>
+            <span className="truncate text-lg font-medium leading-[1.3] text-white sm:text-xs sm:leading-normal">AI Club</span>
+            <span className="truncate text-sm leading-[1.3] text-white/40 sm:text-[10px] sm:leading-normal">Admin</span>
           </div>
           <div className="ml-auto h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50" />
         </div>

@@ -117,7 +117,7 @@ export default function CalendarPage() {
     <>
       <CreatePostModal open={modalOpen} onClose={() => setModalOpen(false)} />
 
-      <div className="flex flex-col gap-11 p-7 sm:gap-8 sm:p-6">
+      <div className="flex flex-col gap-14 p-8 sm:gap-8 sm:p-6">
         <PageHeader
           title="Content Calendar"
           description="Plan and visualize your entire content strategy"
@@ -126,7 +126,7 @@ export default function CalendarPage() {
         >
           <button
             onClick={() => setModalOpen(true)}
-            className="flex min-h-14 items-center gap-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-purple-500/20 transition-all hover:opacity-90 sm:min-h-0 sm:gap-1.5 sm:px-3 sm:py-2 sm:text-xs sm:font-medium"
+            className="flex min-h-[58px] items-center gap-2.5 rounded-2xl bg-gradient-to-r from-purple-500 to-blue-500 px-7 py-3 text-[17px] font-semibold text-white shadow-lg shadow-purple-500/30 transition-all hover:opacity-90 sm:min-h-0 sm:gap-1.5 sm:rounded-xl sm:px-3 sm:py-2 sm:text-xs sm:font-medium"
           >
             <Plus className="h-5 w-5 sm:h-3.5 sm:w-3.5" />
             Add Content
@@ -134,43 +134,43 @@ export default function CalendarPage() {
         </PageHeader>
 
         {/* Summary badges */}
-        <div className="flex flex-wrap gap-2.5 sm:gap-2">
-          <Badge className="h-9 rounded-full border px-4 py-1.5 text-base bg-emerald-500/10 text-emerald-400 border-emerald-500/20 sm:h-5 sm:px-3 sm:text-xs">
+        <div className="flex flex-wrap gap-3 sm:gap-2">
+          <Badge className="h-10 rounded-full border px-[18px] py-2 text-base leading-[1.4] bg-emerald-500/10 text-emerald-400 border-emerald-500/20 sm:h-5 sm:px-3 sm:py-1 sm:text-xs sm:leading-normal">
             {scheduledCount} scheduled
           </Badge>
-          <Badge className="h-9 rounded-full border px-4 py-1.5 text-base bg-yellow-500/10 text-yellow-400 border-yellow-500/20 sm:h-5 sm:px-3 sm:text-xs">
+          <Badge className="h-10 rounded-full border px-[18px] py-2 text-base leading-[1.4] bg-yellow-500/10 text-yellow-400 border-yellow-500/20 sm:h-5 sm:px-3 sm:py-1 sm:text-xs sm:leading-normal">
             {draftCount} {draftCount === 1 ? "draft" : "drafts"}
           </Badge>
           {gapLabel && (
-            <Badge className="h-9 rounded-full border px-4 py-1.5 text-base bg-red-500/10 text-red-400 border-red-500/20 sm:h-5 sm:px-3 sm:text-xs">
+            <Badge className="h-10 rounded-full border px-[18px] py-2 text-base leading-[1.4] bg-red-500/10 text-red-400 border-red-500/20 sm:h-5 sm:px-3 sm:py-1 sm:text-xs sm:leading-normal">
               Gap: {gapLabel}
             </Badge>
           )}
           {!gapLabel && (
-            <Badge className="h-9 rounded-full border px-4 py-1.5 text-base bg-white/[0.05] text-white/50 border-white/[0.08] sm:h-5 sm:px-3 sm:text-xs sm:text-white/40">
+            <Badge className="h-10 rounded-full border px-[18px] py-2 text-base leading-[1.4] bg-white/[0.05] text-white/50 border-white/[0.08] sm:h-5 sm:px-3 sm:py-1 sm:text-xs sm:leading-normal sm:text-white/40">
               No gaps in next 14 days
             </Badge>
           )}
         </div>
 
-        <div className="grid grid-cols-1 gap-9 sm:gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-11 sm:gap-6 lg:grid-cols-3">
           {/* Calendar grid */}
           <div className="lg:col-span-2">
             <SectionCard title={monthLabel} description="Content overview">
               {/* Weekday headers */}
-              <div className="mb-3 grid grid-cols-7 gap-1.5 sm:mb-2 sm:gap-1">
+              <div className="mb-4 grid grid-cols-7 gap-2 sm:mb-2 sm:gap-1">
                 {WEEKDAYS.map((d) => (
-                  <div key={d} className="py-1.5 text-center text-sm font-semibold uppercase text-white/40 sm:py-1 sm:text-[10px] sm:text-white/25">
+                  <div key={d} className="py-2 text-center text-sm font-semibold uppercase leading-[1.4] text-white/45 sm:py-1 sm:text-[10px] sm:leading-normal sm:text-white/25">
                     {d}
                   </div>
                 ))}
               </div>
 
               {/* Grid cells */}
-              <div className="grid grid-cols-7 gap-1.5 sm:gap-1">
+              <div className="grid grid-cols-7 gap-2 sm:gap-1">
                 {/* Leading empty cells */}
                 {Array.from({ length: startOffset }, (_, i) => (
-                  <div key={`empty-${i}`} className="h-24 rounded-lg p-2 sm:h-20 sm:p-1.5" />
+                  <div key={`empty-${i}`} className="h-28 rounded-2xl p-2.5 sm:h-20 sm:rounded-lg sm:p-1.5" />
                 ))}
 
                 {/* Day cells */}
@@ -184,7 +184,7 @@ export default function CalendarPage() {
                     <div
                       key={day}
                       onClick={() => setModalOpen(true)}
-                      className={`h-28 rounded-xl border p-2.5 transition-all duration-200 cursor-pointer sm:h-20 sm:p-1.5 ${
+                      className={`h-32 rounded-2xl border p-3 transition-all duration-200 cursor-pointer sm:h-20 sm:rounded-xl sm:p-1.5 ${
                         isToday
                           ? "border-purple-500/40 bg-purple-500/10"
                           : dayPosts.length > 0
@@ -193,15 +193,15 @@ export default function CalendarPage() {
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className={`text-base font-semibold sm:text-[11px] ${isToday ? "text-purple-400" : "text-white/50 sm:text-white/40"}`}>
+                        <span className={`text-lg font-semibold leading-[1.3] sm:text-[11px] sm:leading-normal ${isToday ? "text-purple-400" : "text-white/55 sm:text-white/40"}`}>
                           {day}
                         </span>
                         {dayPosts.length > 1 && (
-                          <span className="text-sm text-white/40 sm:text-[9px] sm:text-white/30">+{dayPosts.length - 1}</span>
+                          <span className="text-sm leading-[1.4] text-white/45 sm:text-[9px] sm:leading-normal sm:text-white/30">+{dayPosts.length - 1}</span>
                         )}
                       </div>
                       {first && FormatIcon && (
-                        <div className={`flex items-center gap-1 rounded border px-2 py-1.5 text-sm font-medium sm:gap-0.5 sm:px-1 sm:py-0.5 sm:text-[9px] ${FORMAT_CHIP[first.format] ?? FORMAT_CHIP.image} truncate`}>
+                        <div className={`flex items-center gap-1 rounded-lg border px-2 py-1.5 text-sm font-medium leading-[1.35] sm:gap-0.5 sm:rounded sm:px-1 sm:py-0.5 sm:text-[9px] sm:leading-normal ${FORMAT_CHIP[first.format] ?? FORMAT_CHIP.image} truncate`}>
                           <FormatIcon className="h-3.5 w-3.5 shrink-0 sm:h-2.5 sm:w-2.5" />
                           <span className="truncate">{first.title || first.caption.slice(0, 16)}</span>
                         </div>
@@ -215,14 +215,14 @@ export default function CalendarPage() {
 
           {/* Upcoming content list */}
           <SectionCard title="Upcoming" description="Next scheduled posts">
-            <div className="flex flex-col gap-4 sm:gap-3">
+            <div className="flex flex-col gap-5 sm:gap-3">
               {upcoming.length === 0 ? (
-                <div className="flex flex-col items-center gap-4 py-10 text-center sm:gap-3 sm:py-8">
+                <div className="flex flex-col items-center gap-5 py-12 text-center sm:gap-3 sm:py-8">
                   <CalendarDays className="h-10 w-10 text-white/10 sm:h-8 sm:w-8" />
-                  <p className="text-lg text-white/40 sm:text-sm sm:text-white/30">No upcoming posts</p>
+                  <p className="text-xl leading-[1.35] text-white/45 sm:text-sm sm:leading-normal sm:text-white/30">No upcoming posts</p>
                   <button
                     onClick={() => setModalOpen(true)}
-                    className="min-h-11 rounded-lg px-4 text-base font-medium text-purple-400/85 transition-colors hover:text-purple-400 sm:min-h-0 sm:px-0 sm:text-xs sm:font-normal sm:text-purple-400/70"
+                    className="min-h-12 rounded-xl px-5 text-base font-semibold text-purple-400/85 transition-colors hover:text-purple-400 sm:min-h-0 sm:rounded-lg sm:px-0 sm:text-xs sm:font-normal sm:text-purple-400/70"
                   >
                     + Schedule a post
                   </button>
@@ -234,20 +234,20 @@ export default function CalendarPage() {
                   return (
                     <div
                       key={post.id}
-                      className="flex items-start gap-4 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 sm:gap-3 sm:p-3"
+                      className="flex items-start gap-5 rounded-[1.35rem] border border-white/[0.06] bg-white/[0.02] p-5 sm:gap-3 sm:rounded-xl sm:p-3"
                     >
                       <div className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:h-6 sm:w-6 ${cfg.bg}`}>
                         <StatusIcon className={`h-4 w-4 sm:h-3.5 sm:w-3.5 ${cfg.color}`} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="truncate text-base font-semibold text-white/90 sm:text-xs sm:font-medium sm:text-white/80">
+                        <p className="truncate text-lg font-semibold leading-[1.3] text-white/90 sm:text-xs sm:font-medium sm:leading-normal sm:text-white/80">
                           {post.title || post.caption.slice(0, 40)}
                         </p>
                         <div className="mt-2 flex items-center gap-2.5 sm:mt-1 sm:gap-2">
-                          <span className="text-sm text-white/40 sm:text-[10px] sm:text-white/30">
+                          <span className="text-sm leading-[1.45] text-white/45 sm:text-[10px] sm:leading-normal sm:text-white/30">
                             {formatUpcomingDate(post.scheduledFor!)}
                           </span>
-                          <Badge className="h-7 rounded-full bg-white/[0.07] px-2.5 text-sm text-white/50 sm:h-3.5 sm:px-1.5 sm:text-[9px] sm:text-white/40">
+                          <Badge className="h-8 rounded-full bg-white/[0.07] px-3 text-sm leading-[1.4] text-white/55 sm:h-3.5 sm:px-1.5 sm:text-[9px] sm:leading-normal sm:text-white/40">
                             {post.format}
                           </Badge>
                         </div>
@@ -259,9 +259,9 @@ export default function CalendarPage() {
             </div>
 
             {gapLabel && (
-              <div className="mt-5 flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/[0.07] p-4 sm:mt-4 sm:gap-2 sm:p-3">
+              <div className="mt-6 flex items-start gap-3 rounded-[1.35rem] border border-red-500/20 bg-red-500/[0.07] p-5 sm:mt-4 sm:gap-2 sm:rounded-xl sm:p-3">
                 <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-400 sm:h-3.5 sm:w-3.5" />
-                <p className="text-base leading-relaxed text-red-400/85 sm:text-[11px] sm:text-red-400/80">
+                <p className="text-base leading-[1.55] text-red-400/85 sm:text-[11px] sm:leading-normal sm:text-red-400/80">
                   <strong>{gapLabel}</strong> has no content scheduled. Consider adding a post to maintain consistency.
                 </p>
               </div>
