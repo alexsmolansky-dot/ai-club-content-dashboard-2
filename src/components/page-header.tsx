@@ -19,12 +19,12 @@ export function PageHeader({
   className,
 }: PageHeaderProps) {
   return (
-    <div className={cn("flex items-start justify-between", className)}>
+    <div className={cn("flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between", className)}>
       <div className="flex items-center gap-4">
         {Icon && (
           <div
             className={cn(
-              "flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br shadow-lg",
+              "flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br shadow-lg sm:h-11 sm:w-11",
               iconGradient
             )}
           >
@@ -32,13 +32,13 @@ export function PageHeader({
           </div>
         )}
         <div>
-          <h1 className="text-xl font-bold text-white tracking-tight">{title}</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-white sm:text-xl">{title}</h1>
           {description && (
-            <p className="text-sm text-white/40 mt-0.5">{description}</p>
+            <p className="mt-1 text-base leading-relaxed text-white/45 sm:mt-0.5 sm:text-sm sm:leading-normal sm:text-white/40">{description}</p>
           )}
         </div>
       </div>
-      {children && <div className="flex items-center gap-2">{children}</div>}
+      {children && <div className="flex flex-wrap items-center gap-2 sm:flex-nowrap">{children}</div>}
     </div>
   );
 }

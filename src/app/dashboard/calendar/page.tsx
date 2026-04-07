@@ -117,7 +117,7 @@ export default function CalendarPage() {
     <>
       <CreatePostModal open={modalOpen} onClose={() => setModalOpen(false)} />
 
-      <div className="flex flex-col gap-8 p-6">
+      <div className="flex flex-col gap-9 p-6 sm:gap-8">
         <PageHeader
           title="Content Calendar"
           description="Plan and visualize your entire content strategy"
@@ -126,7 +126,7 @@ export default function CalendarPage() {
         >
           <button
             onClick={() => setModalOpen(true)}
-            className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 px-3 py-2 text-xs font-medium text-white shadow-lg shadow-purple-500/20 hover:opacity-90 transition-all"
+            className="flex min-h-11 items-center gap-2 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 px-4 py-2.5 text-sm font-medium text-white shadow-lg shadow-purple-500/20 transition-all hover:opacity-90 sm:min-h-0 sm:gap-1.5 sm:px-3 sm:py-2 sm:text-xs"
           >
             <Plus className="h-3.5 w-3.5" />
             Add Content
@@ -135,32 +135,32 @@ export default function CalendarPage() {
 
         {/* Summary badges */}
         <div className="flex flex-wrap gap-2">
-          <Badge className="rounded-full border px-3 py-1 text-xs bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
+          <Badge className="h-7 rounded-full border px-3.5 py-1 text-sm bg-emerald-500/10 text-emerald-400 border-emerald-500/20 sm:h-5 sm:px-3 sm:text-xs">
             {scheduledCount} scheduled
           </Badge>
-          <Badge className="rounded-full border px-3 py-1 text-xs bg-yellow-500/10 text-yellow-400 border-yellow-500/20">
+          <Badge className="h-7 rounded-full border px-3.5 py-1 text-sm bg-yellow-500/10 text-yellow-400 border-yellow-500/20 sm:h-5 sm:px-3 sm:text-xs">
             {draftCount} {draftCount === 1 ? "draft" : "drafts"}
           </Badge>
           {gapLabel && (
-            <Badge className="rounded-full border px-3 py-1 text-xs bg-red-500/10 text-red-400 border-red-500/20">
+            <Badge className="h-7 rounded-full border px-3.5 py-1 text-sm bg-red-500/10 text-red-400 border-red-500/20 sm:h-5 sm:px-3 sm:text-xs">
               Gap: {gapLabel}
             </Badge>
           )}
           {!gapLabel && (
-            <Badge className="rounded-full border px-3 py-1 text-xs bg-white/[0.05] text-white/40 border-white/[0.08]">
+            <Badge className="h-7 rounded-full border px-3.5 py-1 text-sm bg-white/[0.05] text-white/45 border-white/[0.08] sm:h-5 sm:px-3 sm:text-xs sm:text-white/40">
               No gaps in next 14 days
             </Badge>
           )}
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-7 sm:gap-6 lg:grid-cols-3">
           {/* Calendar grid */}
           <div className="lg:col-span-2">
             <SectionCard title={monthLabel} description="Content overview">
               {/* Weekday headers */}
               <div className="grid grid-cols-7 gap-1 mb-2">
                 {WEEKDAYS.map((d) => (
-                  <div key={d} className="text-center text-[10px] font-semibold text-white/25 uppercase py-1">
+                  <div key={d} className="py-1 text-center text-xs font-semibold uppercase text-white/35 sm:text-[10px] sm:text-white/25">
                     {d}
                   </div>
                 ))}
@@ -184,7 +184,7 @@ export default function CalendarPage() {
                     <div
                       key={day}
                       onClick={() => setModalOpen(true)}
-                      className={`rounded-xl p-1.5 h-20 border transition-all duration-200 cursor-pointer ${
+                      className={`h-24 rounded-xl border p-2 transition-all duration-200 cursor-pointer sm:h-20 sm:p-1.5 ${
                         isToday
                           ? "border-purple-500/40 bg-purple-500/10"
                           : dayPosts.length > 0
@@ -193,15 +193,15 @@ export default function CalendarPage() {
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className={`text-[11px] font-semibold ${isToday ? "text-purple-400" : "text-white/40"}`}>
+                        <span className={`text-sm font-semibold sm:text-[11px] ${isToday ? "text-purple-400" : "text-white/45 sm:text-white/40"}`}>
                           {day}
                         </span>
                         {dayPosts.length > 1 && (
-                          <span className="text-[9px] text-white/30">+{dayPosts.length - 1}</span>
+                          <span className="text-xs text-white/35 sm:text-[9px] sm:text-white/30">+{dayPosts.length - 1}</span>
                         )}
                       </div>
                       {first && FormatIcon && (
-                        <div className={`rounded px-1 py-0.5 text-[9px] font-medium border flex items-center gap-0.5 ${FORMAT_CHIP[first.format] ?? FORMAT_CHIP.image} truncate`}>
+                        <div className={`rounded border px-1.5 py-1 text-xs font-medium flex items-center gap-1 sm:px-1 sm:py-0.5 sm:text-[9px] sm:gap-0.5 ${FORMAT_CHIP[first.format] ?? FORMAT_CHIP.image} truncate`}>
                           <FormatIcon className="h-2.5 w-2.5 shrink-0" />
                           <span className="truncate">{first.title || first.caption.slice(0, 16)}</span>
                         </div>
@@ -219,10 +219,10 @@ export default function CalendarPage() {
               {upcoming.length === 0 ? (
                 <div className="flex flex-col items-center gap-3 py-8 text-center">
                   <CalendarDays className="h-8 w-8 text-white/10" />
-                  <p className="text-sm text-white/30">No upcoming posts</p>
+                  <p className="text-base text-white/35 sm:text-sm sm:text-white/30">No upcoming posts</p>
                   <button
                     onClick={() => setModalOpen(true)}
-                    className="text-xs text-purple-400/70 hover:text-purple-400 transition-colors"
+                    className="min-h-9 rounded-lg px-3 text-sm text-purple-400/80 transition-colors hover:text-purple-400 sm:min-h-0 sm:px-0 sm:text-xs sm:text-purple-400/70"
                   >
                     + Schedule a post
                   </button>
@@ -240,14 +240,14 @@ export default function CalendarPage() {
                         <StatusIcon className={`h-3.5 w-3.5 ${cfg.color}`} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-xs font-medium text-white/80 truncate">
+                        <p className="truncate text-sm font-medium text-white/85 sm:text-xs sm:text-white/80">
                           {post.title || post.caption.slice(0, 40)}
                         </p>
                         <div className="mt-1 flex items-center gap-2">
-                          <span className="text-[10px] text-white/30">
+                          <span className="text-xs text-white/35 sm:text-[10px] sm:text-white/30">
                             {formatUpcomingDate(post.scheduledFor!)}
                           </span>
-                          <Badge className="h-3.5 rounded-full bg-white/[0.07] px-1.5 text-[9px] text-white/40">
+                          <Badge className="h-6 rounded-full bg-white/[0.07] px-2 text-xs text-white/45 sm:h-3.5 sm:px-1.5 sm:text-[9px] sm:text-white/40">
                             {post.format}
                           </Badge>
                         </div>
@@ -261,7 +261,7 @@ export default function CalendarPage() {
             {gapLabel && (
               <div className="mt-4 flex items-start gap-2 rounded-xl border border-red-500/20 bg-red-500/[0.07] p-3">
                 <AlertCircle className="h-3.5 w-3.5 shrink-0 text-red-400 mt-0.5" />
-                <p className="text-[11px] text-red-400/80 leading-relaxed">
+                <p className="text-sm leading-relaxed text-red-400/85 sm:text-[11px] sm:text-red-400/80">
                   <strong>{gapLabel}</strong> has no content scheduled. Consider adding a post to maintain consistency.
                 </p>
               </div>

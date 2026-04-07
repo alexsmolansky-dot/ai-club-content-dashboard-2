@@ -141,21 +141,21 @@ function PostRow({
         {/* Title row + action buttons */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-white/90 truncate">
+            <p className="truncate text-base font-semibold text-white/90 sm:text-sm">
               {post.title}
             </p>
-            <p className="mt-0.5 text-xs text-white/40 line-clamp-2 leading-relaxed">
+            <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-white/45 sm:mt-0.5 sm:text-xs sm:text-white/40">
               {post.caption}
             </p>
           </div>
 
           {/* Hover actions */}
-          <div className="flex shrink-0 items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+          <div className="flex shrink-0 items-center gap-1 opacity-100 transition-opacity sm:opacity-0 sm:group-hover:opacity-100">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => onEdit(post)}
-              className="h-7 px-2.5 text-[11px] text-white/40 hover:bg-white/[0.06] hover:text-white"
+              className="h-9 px-3 text-sm text-white/50 hover:bg-white/[0.06] hover:text-white sm:h-7 sm:px-2.5 sm:text-[11px] sm:text-white/40"
             >
               Edit
             </Button>
@@ -163,7 +163,7 @@ function PostRow({
               variant="ghost"
               size="sm"
               onClick={() => onDelete(post.id)}
-              className="h-7 w-7 p-0 text-rose-400/50 hover:bg-rose-500/[0.08] hover:text-rose-400"
+              className="h-9 w-9 p-0 text-rose-400/60 hover:bg-rose-500/[0.08] hover:text-rose-400 sm:h-7 sm:w-7 sm:text-rose-400/50"
             >
               <Trash2 className="h-3.5 w-3.5" />
             </Button>
@@ -177,13 +177,13 @@ function PostRow({
             {post.tags.slice(0, 6).map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-cyan-500/20 bg-cyan-500/8 px-2 py-0.5 text-[10px] font-medium text-cyan-400/80"
+                className="rounded-full border border-cyan-500/20 bg-cyan-500/8 px-2.5 py-1 text-xs font-medium text-cyan-400/85 sm:px-2 sm:py-0.5 sm:text-[10px] sm:text-cyan-400/80"
               >
                 {tag}
               </span>
             ))}
             {post.tags.length > 6 && (
-              <span className="text-[10px] text-white/25">
+              <span className="text-xs text-white/30 sm:text-[10px] sm:text-white/25">
                 +{post.tags.length - 6} more
               </span>
             )}
@@ -194,7 +194,7 @@ function PostRow({
         {isFailed && post.publishError && (
           <div className="mt-2 flex items-start gap-1.5 rounded-lg border border-red-500/20 bg-red-500/[0.06] px-3 py-2">
             <AlertCircle className="mt-0.5 h-3 w-3 shrink-0 text-red-400" />
-            <p className="text-[10px] leading-snug text-red-300/80">
+            <p className="text-xs leading-relaxed text-red-300/85 sm:text-[10px] sm:leading-snug sm:text-red-300/80">
               {post.publishError}
             </p>
           </div>
@@ -204,7 +204,7 @@ function PostRow({
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {/* Publish status badge */}
           <Badge
-            className={`flex h-5 items-center gap-1 rounded-full px-2 text-[10px] font-medium ${publishStyle.badge}`}
+            className={`flex h-6 items-center gap-1 rounded-full px-2.5 text-xs font-medium sm:h-5 sm:px-2 sm:text-[10px] ${publishStyle.badge}`}
           >
             <StatusIcon
               className={`h-2.5 w-2.5 ${isPublishing ? "animate-spin" : ""}`}
@@ -214,7 +214,7 @@ function PostRow({
 
           {/* Pillar */}
           <Badge
-            className={`h-5 rounded-full px-2 text-[10px] font-medium ${PILLAR_BADGE_COLORS[post.pillar]}`}
+            className={`h-6 rounded-full px-2.5 text-xs font-medium sm:h-5 sm:px-2 sm:text-[10px] ${PILLAR_BADGE_COLORS[post.pillar]}`}
           >
             {post.pillar.replace(/-/g, " ")}
           </Badge>
@@ -223,7 +223,7 @@ function PostRow({
           {post.platform.map((p) => (
             <Badge
               key={p}
-              className={`flex h-5 items-center gap-1 rounded-full px-2 text-[10px] font-medium ${PLATFORM_BADGE[p]}`}
+              className={`flex h-6 items-center gap-1 rounded-full px-2.5 text-xs font-medium sm:h-5 sm:px-2 sm:text-[10px] ${PLATFORM_BADGE[p]}`}
             >
               {p === "instagram" && <Camera className="h-2.5 w-2.5" />}
               {p === "linkedin"  && <BriefcaseIcon className="h-2.5 w-2.5" />}
@@ -233,7 +233,7 @@ function PostRow({
 
           {/* Scheduled time */}
           {isScheduled && post.scheduledFor && (
-            <span className="flex items-center gap-1 text-[10px] text-emerald-400/60">
+            <span className="flex items-center gap-1 text-xs text-emerald-400/70 sm:text-[10px] sm:text-emerald-400/60">
               <Clock className="h-2.5 w-2.5" />
               {formatDate(post.scheduledFor)}
             </span>
@@ -241,7 +241,7 @@ function PostRow({
 
           {/* Published at */}
           {post.publishStatus === "published" && post.publishedAt && (
-            <span className="flex items-center gap-1 text-[10px] text-purple-400/50">
+            <span className="flex items-center gap-1 text-xs text-purple-400/60 sm:text-[10px] sm:text-purple-400/50">
               <CheckCircle2 className="h-2.5 w-2.5" />
               Published {formatRelativeDate(post.publishedAt)}
             </span>
@@ -249,7 +249,7 @@ function PostRow({
 
           {/* Created at — rightmost */}
           {post.createdAt && (
-            <span className="ml-auto text-[10px] text-white/25">
+            <span className="ml-auto text-xs text-white/30 sm:text-[10px] sm:text-white/25">
               {formatRelativeDate(post.createdAt)}
             </span>
           )}
@@ -267,8 +267,8 @@ function PostRow({
               .filter((s) => s.value !== undefined)
               .map((s) => (
                 <div key={s.label} className="flex items-center gap-1">
-                  <span className="text-[10px] text-white/25">{s.label}</span>
-                  <span className="text-[10px] font-semibold text-white/50">
+                  <span className="text-xs text-white/30 sm:text-[10px] sm:text-white/25">{s.label}</span>
+                  <span className="text-xs font-semibold text-white/55 sm:text-[10px] sm:text-white/50">
                     {s.value! >= 1000
                       ? `${(s.value! / 1000).toFixed(1)}K`
                       : s.value}
@@ -461,19 +461,19 @@ export default function PlannerPage() {
         post={editingPost ?? undefined}
       />
 
-      <div className="flex flex-col gap-8 p-6">
+      <div className="flex flex-col gap-9 p-6 sm:gap-8">
         <PageHeader
           title="Content Planner"
           description="Manage all posts across Instagram, LinkedIn, and TikTok"
           icon={FileText}
           iconGradient="from-pink-500 to-rose-500"
         >
-          <div className="flex items-center gap-2">
+          <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
             {/* Run Scheduler */}
             <Button
               onClick={handleRunScheduler}
               disabled={schedulerRunning}
-              className="h-8 gap-1.5 border border-emerald-500/30 bg-emerald-500/10 px-3 text-xs font-medium text-emerald-400 transition hover:bg-emerald-500/20 disabled:opacity-50"
+              className="h-11 justify-center gap-2 border border-emerald-500/30 bg-emerald-500/10 px-4 text-sm font-medium text-emerald-400 transition hover:bg-emerald-500/20 disabled:opacity-50 sm:h-8 sm:gap-1.5 sm:px-3 sm:text-xs"
             >
               {schedulerRunning ? (
                 <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -486,7 +486,7 @@ export default function PlannerPage() {
             {/* New Post */}
             <Button
               onClick={handleNewPost}
-              className="h-8 gap-1.5 bg-gradient-to-r from-pink-500 to-rose-500 px-3 text-xs font-medium text-white shadow-lg shadow-pink-500/20 transition hover:opacity-90"
+              className="h-11 justify-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 px-4 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition hover:opacity-90 sm:h-8 sm:gap-1.5 sm:px-3 sm:text-xs"
             >
               <Plus className="h-3.5 w-3.5" />
               New Post
@@ -504,20 +504,20 @@ export default function PlannerPage() {
               <button
                 key={s}
                 onClick={() => setStatusFilter(active ? "all" : s)}
-                className={`flex items-center gap-3 rounded-xl border px-4 py-3 text-left transition-all ${
+                className={`flex min-h-20 items-center gap-3 rounded-xl border px-4 py-4 text-left transition-all sm:min-h-0 sm:py-3 ${
                   active
                     ? "border-white/20 bg-white/[0.07]"
                     : "border-white/[0.05] bg-white/[0.02] hover:border-white/[0.09]"
                 }`}
               >
                 <div
-                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${cfg.badge}`}
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg sm:h-7 sm:w-7 ${cfg.badge}`}
                 >
                   <Icon className="h-3.5 w-3.5" />
                 </div>
                 <div>
-                  <p className="text-[10px] text-white/40">{cfg.label}</p>
-                  <p className="text-xl font-bold text-white">{counts[s]}</p>
+                  <p className="text-xs text-white/45 sm:text-[10px] sm:text-white/40">{cfg.label}</p>
+                  <p className="text-2xl font-bold text-white sm:text-xl">{counts[s]}</p>
                 </div>
               </button>
             );
@@ -528,7 +528,7 @@ export default function PlannerPage() {
         {counts.publishing > 0 && (
           <div className="flex items-center gap-2.5 rounded-xl border border-blue-500/20 bg-blue-500/[0.06] px-4 py-3">
             <Zap className="h-4 w-4 shrink-0 text-blue-400" />
-            <p className="text-xs text-blue-300/80">
+            <p className="text-sm text-blue-300/85 sm:text-xs sm:text-blue-300/80">
               <span className="font-semibold">{counts.publishing}</span>{" "}
               post{counts.publishing > 1 ? "s are" : " is"} currently being published by the scheduler.
             </p>
@@ -541,9 +541,9 @@ export default function PlannerPage() {
           title="Posts"
           description={`${filtered.length} of ${posts.length} posts`}
           headerActions={
-            <div className="flex items-center gap-1 text-white/30">
+            <div className="flex items-center gap-1 text-sm text-white/40 sm:text-xs sm:text-white/30">
               <Filter className="h-3.5 w-3.5" />
-              <span className="text-xs">Filter</span>
+              <span>Filter</span>
             </div>
           }
         >
@@ -556,7 +556,7 @@ export default function PlannerPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search title, caption, or tags…"
-                className="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] py-2 pl-8 pr-3 text-xs text-white placeholder:text-white/25 focus:border-white/20 focus:outline-none"
+                className="w-full rounded-lg border border-white/[0.07] bg-white/[0.03] py-3 pl-9 pr-3 text-sm text-white placeholder:text-white/30 focus:border-white/20 focus:outline-none sm:py-2 sm:pl-8 sm:text-xs sm:placeholder:text-white/25"
               />
             </div>
 
@@ -567,7 +567,7 @@ export default function PlannerPage() {
                   <button
                     key={s}
                     onClick={() => setStatusFilter(s)}
-                    className={`rounded-md px-2.5 py-1 text-[11px] font-medium capitalize transition-all ${
+                    className={`min-h-8 rounded-md px-3 py-1.5 text-xs font-medium capitalize transition-all sm:min-h-0 sm:px-2.5 sm:py-1 sm:text-[11px] ${
                       statusFilter === s
                         ? "bg-white/[0.1] text-white"
                         : "text-white/40 hover:text-white/60"
@@ -587,7 +587,7 @@ export default function PlannerPage() {
                 <button
                   key={p}
                   onClick={() => setPlatformFilter(p)}
-                  className={`rounded-md px-3 py-1 text-[11px] font-medium capitalize transition-all ${
+                  className={`min-h-8 rounded-md px-3.5 py-1.5 text-xs font-medium capitalize transition-all sm:min-h-0 sm:px-3 sm:py-1 sm:text-[11px] ${
                     platformFilter === p
                       ? "bg-white/[0.1] text-white"
                       : "text-white/40 hover:text-white/60"
@@ -605,9 +605,9 @@ export default function PlannerPage() {
               <div className="flex flex-col items-center gap-3 py-14 text-center">
                 <LayoutGrid className="h-8 w-8 text-white/10" />
                 <div>
-                  <p className="text-sm text-white/30">No posts match your filters</p>
+                  <p className="text-base text-white/35 sm:text-sm sm:text-white/30">No posts match your filters</p>
                   {posts.length === 0 && (
-                    <p className="mt-1 text-xs text-white/20">
+                    <p className="mt-1 text-sm text-white/25 sm:text-xs sm:text-white/20">
                       Create your first post with the button above
                     </p>
                   )}

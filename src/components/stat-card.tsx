@@ -46,12 +46,12 @@ export function StatCard({
 
       <div className="flex items-start justify-between">
         <div className="flex flex-col gap-1">
-          <p className="text-xs font-medium text-white/40 uppercase tracking-wider">{title}</p>
-          <p className="text-2xl font-bold text-white tracking-tight">{value}</p>
+          <p className="text-sm font-medium uppercase tracking-wider text-white/45 sm:text-xs sm:text-white/40">{title}</p>
+          <p className="text-3xl font-bold tracking-tight text-white sm:text-2xl">{value}</p>
           {change && (
             <div
               className={cn(
-                "flex items-center gap-1 text-xs font-medium",
+                "flex items-center gap-1 text-sm font-medium sm:text-xs",
                 changeType === "positive"
                   ? "text-emerald-400"
                   : changeType === "negative"
@@ -59,7 +59,7 @@ export function StatCard({
                     : "text-white/40"
               )}
             >
-              <TrendIcon className="h-3 w-3" />
+              <TrendIcon className="h-3.5 w-3.5 sm:h-3 sm:w-3" />
               <span>{change}</span>
               {description && <span className="text-white/30 font-normal">{description}</span>}
             </div>
@@ -67,7 +67,7 @@ export function StatCard({
         </div>
         <div
           className={cn(
-            "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg",
+            "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg sm:h-10 sm:w-10",
             iconGradient
           )}
         >

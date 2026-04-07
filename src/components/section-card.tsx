@@ -23,13 +23,13 @@ export function SectionCard({
       )}
     >
       {(title || headerActions) && (
-        <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-4">
+        <div className="flex flex-col gap-3 border-b border-white/[0.06] px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
           <div>
             {title && (
-              <h2 className="text-sm font-semibold text-white">{title}</h2>
+              <h2 className="text-base font-semibold text-white sm:text-sm">{title}</h2>
             )}
             {description && (
-              <p className="text-xs text-white/40 mt-0.5">{description}</p>
+              <p className="mt-1 text-sm text-white/45 sm:mt-0.5 sm:text-xs sm:text-white/40">{description}</p>
             )}
           </div>
           {headerActions && (

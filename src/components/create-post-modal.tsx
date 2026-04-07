@@ -342,17 +342,17 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                 )}
               </div>
               <div>
-                <h2 className="text-sm font-semibold text-white">
+                <h2 className="text-base font-semibold text-white sm:text-sm">
                   {isEditing ? "Edit Post" : "New Post"}
                 </h2>
-                <p className="mt-0.5 text-[10px] text-white/35">
+                <p className="mt-1 text-xs text-white/40 sm:mt-0.5 sm:text-[10px] sm:text-white/35">
                   {isEditing ? "Update this post in Supabase" : "Create content for your platforms"}
                 </p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="flex h-7 w-7 items-center justify-center rounded-lg text-white/40 transition-all hover:bg-white/[0.07] hover:text-white"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-white/50 transition-all hover:bg-white/[0.07] hover:text-white sm:h-7 sm:w-7 sm:text-white/40"
             >
               <X className="h-4 w-4" />
             </button>
@@ -363,7 +363,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
 
             {/* Platform */}
             <div>
-              <label className="mb-2 block text-[11px] font-semibold uppercase tracking-wider text-white/35">
+              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/45 sm:text-[11px] sm:text-white/35">
                 Platform{" "}
                 <span className="font-normal normal-case text-white/20">
                   (select all that apply)
@@ -377,7 +377,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                       key={p.value}
                       type="button"
                       onClick={() => togglePlatform(p.value)}
-                      className={`flex flex-1 items-center justify-center gap-1.5 rounded-xl border py-2.5 text-xs font-medium transition-all ${
+                      className={`flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl border py-2.5 text-sm font-medium transition-all sm:min-h-0 sm:text-xs ${
                         active
                           ? `border ${p.badge}`
                           : "border-white/[0.07] text-white/35 hover:border-white/[0.12] hover:text-white/60"
@@ -394,7 +394,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
 
             {/* Title */}
             <div>
-              <label className="mb-2 block text-[11px] font-semibold uppercase tracking-wider text-white/35">
+              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/45 sm:text-[11px] sm:text-white/35">
                 Title{" "}
                 <span className="font-normal normal-case text-white/20">
                   (optional — used in planner)
@@ -405,17 +405,17 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                 value={form.title}
                 onChange={(e) => set("title", e.target.value)}
                 placeholder="e.g. Prompt Engineering 101"
-                className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-3.5 py-2.5 text-sm text-white placeholder:text-white/20 transition-all focus:border-white/20 focus:bg-white/[0.04] focus:outline-none"
+                className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-base text-white placeholder:text-white/25 transition-all focus:border-white/20 focus:bg-white/[0.04] focus:outline-none sm:px-3.5 sm:py-2.5 sm:text-sm sm:placeholder:text-white/20"
               />
             </div>
 
             {/* Caption */}
             <div>
               <div className="mb-2 flex items-center justify-between">
-                <label className="block text-[11px] font-semibold uppercase tracking-wider text-white/35">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-white/45 sm:text-[11px] sm:text-white/35">
                   Caption <span className="text-rose-400">*</span>
                 </label>
-                <span className={`font-mono text-[11px] transition-colors ${charColor}`}>
+                <span className={`font-mono text-xs transition-colors sm:text-[11px] ${charColor}`}>
                   {charCount} / {charLimit}
                 </span>
               </div>
@@ -425,7 +425,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                 onChange={(e) => set("caption", e.target.value)}
                 placeholder="Write your caption here… Add hashtags, emojis, and a call to action."
                 rows={5}
-                className={`w-full resize-none rounded-xl border bg-white/[0.03] px-3.5 py-3 text-sm leading-relaxed text-white placeholder:text-white/20 transition-all focus:bg-white/[0.04] focus:outline-none ${
+                className={`w-full resize-none rounded-xl border bg-white/[0.03] px-4 py-3.5 text-base leading-relaxed text-white placeholder:text-white/25 transition-all focus:bg-white/[0.04] focus:outline-none sm:px-3.5 sm:py-3 sm:text-sm sm:placeholder:text-white/20 ${
                   errors.caption
                     ? "border-rose-500/50 focus:border-rose-500/70"
                     : "border-white/[0.08] focus:border-white/20"
@@ -440,13 +440,13 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                 />
               </div>
               {errors.caption && (
-                <p className="mt-1 text-[11px] text-rose-400">{errors.caption}</p>
+                <p className="mt-1 text-xs text-rose-400 sm:text-[11px]">{errors.caption}</p>
               )}
             </div>
 
             {/* Tags */}
             <div>
-              <label className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-white/35">
+              <label className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white/45 sm:text-[11px] sm:text-white/35">
                 <Hash className="h-3 w-3" />
                 Hashtags / Tags{" "}
                 <span className="font-normal normal-case text-white/20">
@@ -458,7 +458,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                 value={form.tagsRaw}
                 onChange={(e) => set("tagsRaw", e.target.value)}
                 placeholder="#AIClub, #Tech, #Innovation"
-                className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-3.5 py-2.5 text-sm text-white placeholder:text-white/20 transition-all focus:border-cyan-500/40 focus:bg-white/[0.04] focus:outline-none focus:ring-1 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-base text-white placeholder:text-white/25 transition-all focus:border-cyan-500/40 focus:bg-white/[0.04] focus:outline-none focus:ring-1 focus:ring-cyan-500/20 sm:px-3.5 sm:py-2.5 sm:text-sm sm:placeholder:text-white/20"
               />
               {/* Tag preview */}
               {parseTags(form.tagsRaw).length > 0 && (
@@ -466,7 +466,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                   {parseTags(form.tagsRaw).map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-2.5 py-0.5 text-[10px] font-medium text-cyan-400"
+                      className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-400 sm:px-2.5 sm:py-0.5 sm:text-[10px]"
                     >
                       {t}
                     </span>
@@ -477,7 +477,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
 
             {/* Format */}
             <div>
-              <label className="mb-2 block text-[11px] font-semibold uppercase tracking-wider text-white/35">
+              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/45 sm:text-[11px] sm:text-white/35">
                 Format
               </label>
               <div className="flex flex-wrap gap-2">
@@ -486,7 +486,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                     key={f.value}
                     type="button"
                     onClick={() => set("format", f.value)}
-                    className={`flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-medium transition-all ${
+                    className={`flex min-h-10 items-center gap-1.5 rounded-xl border px-4 py-2 text-sm font-medium transition-all sm:min-h-0 sm:px-3 sm:text-xs ${
                       form.format === f.value
                         ? "border-white/20 bg-white/[0.09] text-white"
                         : "border-white/[0.07] text-white/35 hover:border-white/[0.12] hover:text-white/60"
@@ -501,13 +501,13 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
 
             {/* Content pillar */}
             <div>
-              <label className="mb-2 block text-[11px] font-semibold uppercase tracking-wider text-white/35">
+              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/45 sm:text-[11px] sm:text-white/35">
                 Content Pillar
               </label>
               <select
                 value={form.pillar}
                 onChange={(e) => set("pillar", e.target.value as ContentPillar)}
-                className="w-full rounded-xl border border-white/[0.08] bg-[oklch(0.1_0.015_264)] px-3.5 py-2.5 text-sm text-white/80 transition-all focus:border-white/20 focus:outline-none"
+                className="w-full rounded-xl border border-white/[0.08] bg-[oklch(0.1_0.015_264)] px-4 py-3 text-base text-white/85 transition-all focus:border-white/20 focus:outline-none sm:px-3.5 sm:py-2.5 sm:text-sm sm:text-white/80"
               >
                 {PILLARS.map((p) => (
                   <option key={p.value} value={p.value} className="bg-[oklch(0.1_0.015_264)]">
@@ -519,7 +519,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
 
             {/* Status */}
             <div>
-              <label className="mb-2 block text-[11px] font-semibold uppercase tracking-wider text-white/35">
+              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/45 sm:text-[11px] sm:text-white/35">
                 Post Status
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -531,7 +531,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                       key={s.value}
                       type="button"
                       onClick={() => set("status", s.value)}
-                      className={`flex items-center justify-center gap-2 rounded-xl border py-2.5 text-xs font-medium transition-all ${
+                      className={`flex min-h-11 items-center justify-center gap-2 rounded-xl border py-2.5 text-sm font-medium transition-all sm:min-h-0 sm:text-xs ${
                         active
                           ? s.active
                           : "border-white/[0.07] text-white/35 hover:border-white/[0.12] hover:text-white/60"
@@ -548,7 +548,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
               {form.status === "scheduled" && (
                 <div className="mt-3 grid grid-cols-2 gap-3">
                   <div>
-                    <label className="mb-1.5 block text-[11px] text-white/30">
+                    <label className="mb-1.5 block text-xs text-white/40 sm:text-[11px] sm:text-white/30">
                       Date <span className="text-rose-400">*</span>
                     </label>
                     <input
@@ -556,21 +556,21 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                       value={form.scheduledDate}
                       min={new Date().toISOString().split("T")[0]}
                       onChange={(e) => set("scheduledDate", e.target.value)}
-                      className={`w-full rounded-xl border bg-[oklch(0.1_0.015_264)] px-3.5 py-2.5 text-sm text-white/80 transition-all focus:border-white/20 focus:outline-none ${
+                      className={`w-full rounded-xl border bg-[oklch(0.1_0.015_264)] px-4 py-3 text-base text-white/85 transition-all focus:border-white/20 focus:outline-none sm:px-3.5 sm:py-2.5 sm:text-sm sm:text-white/80 ${
                         errors.scheduledDate ? "border-rose-500/50" : "border-white/[0.08]"
                       }`}
                     />
                     {errors.scheduledDate && (
-                      <p className="mt-1 text-[11px] text-rose-400">{errors.scheduledDate}</p>
+                      <p className="mt-1 text-xs text-rose-400 sm:text-[11px]">{errors.scheduledDate}</p>
                     )}
                   </div>
                   <div>
-                    <label className="mb-1.5 block text-[11px] text-white/30">Time</label>
+                    <label className="mb-1.5 block text-xs text-white/40 sm:text-[11px] sm:text-white/30">Time</label>
                     <input
                       type="time"
                       value={form.scheduledTime}
                       onChange={(e) => set("scheduledTime", e.target.value)}
-                      className="w-full rounded-xl border border-white/[0.08] bg-[oklch(0.1_0.015_264)] px-3.5 py-2.5 text-sm text-white/80 transition-all focus:border-white/20 focus:outline-none"
+                      className="w-full rounded-xl border border-white/[0.08] bg-[oklch(0.1_0.015_264)] px-4 py-3 text-base text-white/85 transition-all focus:border-white/20 focus:outline-none sm:px-3.5 sm:py-2.5 sm:text-sm sm:text-white/80"
                     />
                   </div>
                 </div>
@@ -586,7 +586,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                 return (
                   <Badge
                     key={p}
-                    className={`flex h-5 items-center gap-1 rounded-full border px-2 text-[10px] ${cfg.badge}`}
+                    className={`flex h-6 items-center gap-1 rounded-full border px-2.5 text-xs sm:h-5 sm:px-2 sm:text-[10px] ${cfg.badge}`}
                   >
                     {cfg.icon}
                     {cfg.label}
@@ -600,14 +600,14 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                 variant="ghost"
                 onClick={onClose}
                 disabled={saving}
-                className="h-8 text-xs text-white/40 hover:bg-white/[0.06] hover:text-white"
+                className="h-10 text-sm text-white/50 hover:bg-white/[0.06] hover:text-white sm:h-8 sm:text-xs sm:text-white/40"
               >
                 Cancel
               </Button>
               <Button
                 onClick={handleSubmit}
                 disabled={saving}
-                className={`h-8 gap-1.5 border-0 text-xs font-medium text-white shadow-lg transition-all disabled:opacity-60 ${
+                className={`h-10 gap-2 border-0 text-sm font-medium text-white shadow-lg transition-all disabled:opacity-60 sm:h-8 sm:gap-1.5 sm:text-xs ${
                   isEditing
                     ? "bg-gradient-to-r from-blue-500 to-indigo-500 shadow-blue-500/25 hover:opacity-90"
                     : "bg-gradient-to-r from-pink-500 to-rose-500 shadow-pink-500/25 hover:opacity-90"

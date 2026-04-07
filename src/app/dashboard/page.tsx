@@ -102,21 +102,21 @@ export default function DashboardPage() {
         onClose={() => setModalOpen(false)}
       />
 
-      <div className="flex flex-col gap-8 p-6">
+      <div className="flex flex-col gap-9 p-6 sm:gap-8">
         {/* Header */}
-        <div className="flex items-start justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/60 animate-pulse" />
-              <span className="text-xs text-white/40 font-medium">Live Dashboard</span>
+              <span className="text-sm font-medium text-white/45 sm:text-xs sm:text-white/40">Live Dashboard</span>
             </div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">
+            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-2xl">
               Good morning,{" "}
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                 AI Club
               </span>
             </h1>
-            <p className="text-sm text-white/40 mt-1">
+            <p className="mt-2 text-base leading-relaxed text-white/45 sm:mt-1 sm:text-sm sm:leading-normal sm:text-white/40">
               You have {reviewPosts.length} posts in review and {pendingIdeas.length} new ideas waiting.
             </p>
           </div>
@@ -124,7 +124,7 @@ export default function DashboardPage() {
           {/* ── New Post button ── */}
           <Button
             onClick={() => setModalOpen(true)}
-            className="bg-gradient-to-r from-pink-500 to-rose-500 text-white border-0 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 hover:opacity-90 transition-all"
+            className="min-h-11 bg-gradient-to-r from-pink-500 to-rose-500 text-white border-0 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 hover:opacity-90 transition-all sm:min-h-0"
           >
             <Plus className="h-4 w-4 mr-1.5" />
             New Post
@@ -172,7 +172,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Pipeline status bar */}
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-3">
           {[
             { label: "Published", count: publishedPosts.length, icon: CheckCircle, color: "text-white/40", bg: "bg-white/[0.03]", border: "border-white/[0.05]" },
             { label: "Scheduled", count: scheduledPosts.length, icon: Clock, color: "text-emerald-400", bg: "bg-emerald-500/[0.04]", border: "border-emerald-500/20" },
@@ -182,43 +182,43 @@ export default function DashboardPage() {
             <Link
               key={label}
               href="/dashboard/planner"
-              className={`flex items-center gap-3 rounded-xl border ${border} ${bg} px-4 py-3 transition-all hover:brightness-110`}
+              className={`flex min-h-20 items-center gap-3 rounded-xl border ${border} ${bg} px-4 py-4 transition-all hover:brightness-110 sm:min-h-0 sm:py-3`}
             >
               <Icon className={`h-4 w-4 ${color}`} />
               <div>
-                <p className="text-xs text-white/40">{label}</p>
-                <p className={`text-xl font-bold ${color}`}>{count}</p>
+                <p className="text-sm text-white/45 sm:text-xs sm:text-white/40">{label}</p>
+                <p className={`text-2xl font-bold sm:text-xl ${color}`}>{count}</p>
               </div>
             </Link>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-7 sm:gap-6 lg:grid-cols-3">
           {/* Quick Access */}
           <div className="lg:col-span-2">
             <SectionCard title="Quick Access" description="Jump to any section">
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3">
                 {quickLinks.map((item) => {
                   const Icon = item.icon;
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="group flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 transition-all duration-200 hover:border-white/[0.1] hover:bg-white/[0.04]"
+                      className="group flex min-h-20 items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 transition-all duration-200 hover:border-white/[0.1] hover:bg-white/[0.04] sm:min-h-0"
                     >
                       <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg`}>
                         <Icon className="h-5 w-5 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium text-white">{item.title}</span>
+                          <span className="text-base font-medium text-white sm:text-sm">{item.title}</span>
                           {item.badge && (
-                            <Badge className="h-4 rounded-full bg-white/[0.08] px-1.5 text-[10px] text-white/50">
+                            <Badge className="h-6 rounded-full bg-white/[0.08] px-2 text-xs text-white/60 sm:h-4 sm:px-1.5 sm:text-[10px] sm:text-white/50">
                               {item.badge}
                             </Badge>
                           )}
                         </div>
-                        <p className="text-xs text-white/40 mt-0.5 truncate">{item.description}</p>
+                        <p className="mt-1 truncate text-sm text-white/45 sm:mt-0.5 sm:text-xs sm:text-white/40">{item.description}</p>
                       </div>
                       <ArrowRight className="h-3.5 w-3.5 text-white/20 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-white/40" />
                     </Link>
@@ -236,12 +236,12 @@ export default function DashboardPage() {
               <>
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="flex items-center gap-1 text-xs text-white/30 hover:text-white/70 transition-colors rounded-lg px-2 py-1 hover:bg-white/[0.05]"
+                  className="flex min-h-9 items-center gap-1 rounded-lg px-3 py-2 text-sm text-white/45 transition-colors hover:bg-white/[0.05] hover:text-white/70 sm:min-h-0 sm:px-2 sm:py-1 sm:text-xs sm:text-white/30"
                 >
                   <Plus className="h-3 w-3" />
                   Add
                 </button>
-                <Link href="/dashboard/planner" className="text-xs text-white/40 hover:text-white transition-colors">
+                <Link href="/dashboard/planner" className="flex min-h-9 items-center px-2 text-sm text-white/45 transition-colors hover:text-white sm:min-h-0 sm:px-0 sm:text-xs sm:text-white/40">
                   All →
                 </Link>
               </>
@@ -254,12 +254,12 @@ export default function DashboardPage() {
                     <CalendarDays className="h-5 w-5 text-white/20" />
                   </div>
                   <div>
-                    <p className="text-sm text-white/30">No posts scheduled</p>
-                    <p className="text-xs text-white/20 mt-0.5">Create a post to get started</p>
+                    <p className="text-base text-white/35 sm:text-sm sm:text-white/30">No posts scheduled</p>
+                    <p className="mt-1 text-sm text-white/25 sm:mt-0.5 sm:text-xs sm:text-white/20">Create a post to get started</p>
                   </div>
                   <button
                     onClick={() => setModalOpen(true)}
-                    className="text-xs text-pink-400/70 hover:text-pink-400 transition-colors"
+                    className="min-h-9 rounded-lg px-3 text-sm text-pink-400/80 transition-colors hover:text-pink-400 sm:min-h-0 sm:px-0 sm:text-xs sm:text-pink-400/70"
                   >
                     + New Post
                   </button>
@@ -271,19 +271,19 @@ export default function DashboardPage() {
                       <FileText className="h-3.5 w-3.5 text-white/70" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium text-white/80 truncate">{post.title}</p>
+                      <p className="truncate text-sm font-medium text-white/85 sm:text-xs sm:text-white/80">{post.title}</p>
                       <div className="mt-1 flex items-center gap-1.5 flex-wrap">
-                        <Badge className={`h-4 rounded-full px-1.5 text-[10px] ${statusColors[post.status]}`}>
+                        <Badge className={`h-6 rounded-full px-2 text-xs sm:h-4 sm:px-1.5 sm:text-[10px] ${statusColors[post.status]}`}>
                           {post.status}
                         </Badge>
                         {post.platform.slice(0, 2).map((p) => (
-                          <Badge key={p} className={`h-4 rounded-full px-1.5 text-[10px] ${platformColors[p]}`}>
+                          <Badge key={p} className={`h-6 rounded-full px-2 text-xs sm:h-4 sm:px-1.5 sm:text-[10px] ${platformColors[p]}`}>
                             {p}
                           </Badge>
                         ))}
                       </div>
                       {post.scheduledFor && (
-                        <p className="text-[10px] text-white/30 mt-1">
+                        <p className="mt-1 text-xs text-white/35 sm:text-[10px] sm:text-white/30">
                           <Clock className="inline h-2.5 w-2.5 mr-0.5" />
                           {new Date(post.scheduledFor).toLocaleDateString("en-US", {
                             month: "short",
