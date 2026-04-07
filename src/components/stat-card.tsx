@@ -32,7 +32,7 @@ export function StatCard({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.1] hover:bg-white/[0.05]",
+        "relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.1] hover:bg-white/[0.05] sm:p-5",
         className
       )}
     >
@@ -45,13 +45,13 @@ export function StatCard({
       />
 
       <div className="flex items-start justify-between">
-        <div className="flex flex-col gap-1">
-          <p className="text-sm font-medium uppercase tracking-wider text-white/45 sm:text-xs sm:text-white/40">{title}</p>
-          <p className="text-3xl font-bold tracking-tight text-white sm:text-2xl">{value}</p>
+        <div className="flex flex-col gap-1.5 sm:gap-1">
+          <p className="text-base font-semibold uppercase tracking-wider text-white/50 sm:text-xs sm:font-medium sm:text-white/40">{title}</p>
+          <p className="text-4xl font-bold tracking-tight text-white sm:text-2xl">{value}</p>
           {change && (
             <div
               className={cn(
-                "flex items-center gap-1 text-sm font-medium sm:text-xs",
+                "flex items-center gap-1.5 text-base font-medium sm:gap-1 sm:text-xs",
                 changeType === "positive"
                   ? "text-emerald-400"
                   : changeType === "negative"
@@ -59,7 +59,7 @@ export function StatCard({
                     : "text-white/40"
               )}
             >
-              <TrendIcon className="h-3.5 w-3.5 sm:h-3 sm:w-3" />
+              <TrendIcon className="h-4 w-4 sm:h-3 sm:w-3" />
               <span>{change}</span>
               {description && <span className="text-white/30 font-normal">{description}</span>}
             </div>
@@ -67,11 +67,11 @@ export function StatCard({
         </div>
         <div
           className={cn(
-            "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg sm:h-10 sm:w-10",
+            "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg sm:h-10 sm:w-10",
             iconGradient
           )}
         >
-          <Icon className="h-5 w-5 text-white" />
+          <Icon className="h-6 w-6 text-white sm:h-5 sm:w-5" />
         </div>
       </div>
     </div>

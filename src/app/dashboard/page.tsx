@@ -91,7 +91,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="flex h-full items-center justify-center p-6">
-        <p className="text-sm text-white/30 animate-pulse">Loading posts…</p>
+        <p className="animate-pulse text-base text-white/30 sm:text-sm">Loading posts…</p>
       </div>
     );
   }
@@ -102,21 +102,21 @@ export default function DashboardPage() {
         onClose={() => setModalOpen(false)}
       />
 
-      <div className="flex flex-col gap-9 p-6 sm:gap-8">
+      <div className="flex flex-col gap-11 p-7 sm:gap-8 sm:p-6">
         {/* Header */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <div className="flex items-center gap-2 mb-1">
+            <div className="mb-2 flex items-center gap-2 sm:mb-1">
               <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/60 animate-pulse" />
-              <span className="text-sm font-medium text-white/45 sm:text-xs sm:text-white/40">Live Dashboard</span>
+              <span className="text-base font-medium text-white/50 sm:text-xs sm:text-white/40">Live Dashboard</span>
             </div>
-            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-2xl">
+            <h1 className="text-[2.4rem] font-bold leading-[1.05] tracking-tight text-white sm:text-2xl sm:leading-normal">
               Good morning,{" "}
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                 AI Club
               </span>
             </h1>
-            <p className="mt-2 text-base leading-relaxed text-white/45 sm:mt-1 sm:text-sm sm:leading-normal sm:text-white/40">
+            <p className="mt-3 text-lg leading-relaxed text-white/50 sm:mt-1 sm:text-sm sm:leading-normal sm:text-white/40">
               You have {reviewPosts.length} posts in review and {pendingIdeas.length} new ideas waiting.
             </p>
           </div>
@@ -124,15 +124,15 @@ export default function DashboardPage() {
           {/* ── New Post button ── */}
           <Button
             onClick={() => setModalOpen(true)}
-            className="min-h-11 bg-gradient-to-r from-pink-500 to-rose-500 text-white border-0 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 hover:opacity-90 transition-all sm:min-h-0"
+            className="min-h-14 bg-gradient-to-r from-pink-500 to-rose-500 px-6 text-base font-semibold text-white border-0 shadow-lg shadow-pink-500/25 transition-all hover:shadow-pink-500/40 hover:opacity-90 sm:min-h-0 sm:px-2.5 sm:text-sm sm:font-medium"
           >
-            <Plus className="h-4 w-4 mr-1.5" />
+            <Plus className="mr-1.5 h-5 w-5 sm:h-4 sm:w-4" />
             New Post
           </Button>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           <StatCard
             title="Total Followers"
             value="12.4K"
@@ -172,7 +172,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Pipeline status bar */}
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-3">
+        <div className="grid grid-cols-2 gap-[18px] sm:grid-cols-4 sm:gap-3">
           {[
             { label: "Published", count: publishedPosts.length, icon: CheckCircle, color: "text-white/40", bg: "bg-white/[0.03]", border: "border-white/[0.05]" },
             { label: "Scheduled", count: scheduledPosts.length, icon: Clock, color: "text-emerald-400", bg: "bg-emerald-500/[0.04]", border: "border-emerald-500/20" },
@@ -182,43 +182,43 @@ export default function DashboardPage() {
             <Link
               key={label}
               href="/dashboard/planner"
-              className={`flex min-h-20 items-center gap-3 rounded-xl border ${border} ${bg} px-4 py-4 transition-all hover:brightness-110 sm:min-h-0 sm:py-3`}
+              className={`flex min-h-24 items-center gap-4 rounded-xl border ${border} ${bg} px-5 py-5 transition-all hover:brightness-110 sm:min-h-0 sm:gap-3 sm:px-4 sm:py-3`}
             >
-              <Icon className={`h-4 w-4 ${color}`} />
+              <Icon className={`h-5 w-5 sm:h-4 sm:w-4 ${color}`} />
               <div>
-                <p className="text-sm text-white/45 sm:text-xs sm:text-white/40">{label}</p>
-                <p className={`text-2xl font-bold sm:text-xl ${color}`}>{count}</p>
+                <p className="text-base text-white/50 sm:text-xs sm:text-white/40">{label}</p>
+                <p className={`text-3xl font-bold sm:text-xl ${color}`}>{count}</p>
               </div>
             </Link>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 gap-7 sm:gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-9 sm:gap-6 lg:grid-cols-3">
           {/* Quick Access */}
           <div className="lg:col-span-2">
             <SectionCard title="Quick Access" description="Jump to any section">
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-3">
                 {quickLinks.map((item) => {
                   const Icon = item.icon;
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="group flex min-h-20 items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 transition-all duration-200 hover:border-white/[0.1] hover:bg-white/[0.04] sm:min-h-0"
+                      className="group flex min-h-24 items-center gap-4 rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-200 hover:border-white/[0.1] hover:bg-white/[0.04] sm:min-h-0 sm:gap-3 sm:p-4"
                     >
-                      <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg`}>
-                        <Icon className="h-5 w-5 text-white" />
+                      <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg sm:h-10 sm:w-10`}>
+                        <Icon className="h-6 w-6 text-white sm:h-5 sm:w-5" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-base font-medium text-white sm:text-sm">{item.title}</span>
+                          <span className="text-lg font-semibold text-white sm:text-sm sm:font-medium">{item.title}</span>
                           {item.badge && (
-                            <Badge className="h-6 rounded-full bg-white/[0.08] px-2 text-xs text-white/60 sm:h-4 sm:px-1.5 sm:text-[10px] sm:text-white/50">
+                            <Badge className="h-7 rounded-full bg-white/[0.08] px-2.5 text-sm text-white/65 sm:h-4 sm:px-1.5 sm:text-[10px] sm:text-white/50">
                               {item.badge}
                             </Badge>
                           )}
                         </div>
-                        <p className="mt-1 truncate text-sm text-white/45 sm:mt-0.5 sm:text-xs sm:text-white/40">{item.description}</p>
+                        <p className="mt-1.5 truncate text-base text-white/50 sm:mt-0.5 sm:text-xs sm:text-white/40">{item.description}</p>
                       </div>
                       <ArrowRight className="h-3.5 w-3.5 text-white/20 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-white/40" />
                     </Link>
@@ -236,55 +236,55 @@ export default function DashboardPage() {
               <>
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="flex min-h-9 items-center gap-1 rounded-lg px-3 py-2 text-sm text-white/45 transition-colors hover:bg-white/[0.05] hover:text-white/70 sm:min-h-0 sm:px-2 sm:py-1 sm:text-xs sm:text-white/30"
+                  className="flex min-h-11 items-center gap-1.5 rounded-lg px-4 py-2 text-base text-white/50 transition-colors hover:bg-white/[0.05] hover:text-white/70 sm:min-h-0 sm:gap-1 sm:px-2 sm:py-1 sm:text-xs sm:text-white/30"
                 >
-                  <Plus className="h-3 w-3" />
+                  <Plus className="h-4 w-4 sm:h-3 sm:w-3" />
                   Add
                 </button>
-                <Link href="/dashboard/planner" className="flex min-h-9 items-center px-2 text-sm text-white/45 transition-colors hover:text-white sm:min-h-0 sm:px-0 sm:text-xs sm:text-white/40">
+                <Link href="/dashboard/planner" className="flex min-h-11 items-center px-3 text-base text-white/50 transition-colors hover:text-white sm:min-h-0 sm:px-0 sm:text-xs sm:text-white/40">
                   All →
                 </Link>
               </>
             }
           >
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4 sm:gap-3">
               {upcomingPosts.length === 0 ? (
-                <div className="flex flex-col items-center gap-3 py-8 text-center">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.03]">
-                    <CalendarDays className="h-5 w-5 text-white/20" />
+                <div className="flex flex-col items-center gap-4 py-10 text-center sm:gap-3 sm:py-8">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.03] sm:h-10 sm:w-10">
+                    <CalendarDays className="h-6 w-6 text-white/20 sm:h-5 sm:w-5" />
                   </div>
                   <div>
-                    <p className="text-base text-white/35 sm:text-sm sm:text-white/30">No posts scheduled</p>
-                    <p className="mt-1 text-sm text-white/25 sm:mt-0.5 sm:text-xs sm:text-white/20">Create a post to get started</p>
+                    <p className="text-lg text-white/40 sm:text-sm sm:text-white/30">No posts scheduled</p>
+                    <p className="mt-1.5 text-base text-white/30 sm:mt-0.5 sm:text-xs sm:text-white/20">Create a post to get started</p>
                   </div>
                   <button
                     onClick={() => setModalOpen(true)}
-                    className="min-h-9 rounded-lg px-3 text-sm text-pink-400/80 transition-colors hover:text-pink-400 sm:min-h-0 sm:px-0 sm:text-xs sm:text-pink-400/70"
+                    className="min-h-11 rounded-lg px-4 text-base font-medium text-pink-400/85 transition-colors hover:text-pink-400 sm:min-h-0 sm:px-0 sm:text-xs sm:font-normal sm:text-pink-400/70"
                   >
                     + New Post
                   </button>
                 </div>
               ) : (
                 upcomingPosts.map((post) => (
-                  <div key={post.id} className="flex items-start gap-3 rounded-xl border border-white/[0.05] bg-white/[0.02] p-3">
-                    <div className={`h-8 w-8 shrink-0 rounded-lg bg-gradient-to-br ${post.thumbnail} flex items-center justify-center`}>
-                      <FileText className="h-3.5 w-3.5 text-white/70" />
+                  <div key={post.id} className="flex items-start gap-4 rounded-xl border border-white/[0.05] bg-white/[0.02] p-4 sm:gap-3 sm:p-3">
+                    <div className={`h-10 w-10 shrink-0 rounded-lg bg-gradient-to-br ${post.thumbnail} flex items-center justify-center sm:h-8 sm:w-8`}>
+                      <FileText className="h-[18px] w-[18px] text-white/70 sm:h-3.5 sm:w-3.5" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="truncate text-sm font-medium text-white/85 sm:text-xs sm:text-white/80">{post.title}</p>
-                      <div className="mt-1 flex items-center gap-1.5 flex-wrap">
-                        <Badge className={`h-6 rounded-full px-2 text-xs sm:h-4 sm:px-1.5 sm:text-[10px] ${statusColors[post.status]}`}>
+                      <p className="truncate text-base font-semibold text-white/90 sm:text-xs sm:font-medium sm:text-white/80">{post.title}</p>
+                      <div className="mt-2 flex flex-wrap items-center gap-2 sm:mt-1 sm:gap-1.5">
+                        <Badge className={`h-7 rounded-full px-2.5 text-sm sm:h-4 sm:px-1.5 sm:text-[10px] ${statusColors[post.status]}`}>
                           {post.status}
                         </Badge>
                         {post.platform.slice(0, 2).map((p) => (
-                          <Badge key={p} className={`h-6 rounded-full px-2 text-xs sm:h-4 sm:px-1.5 sm:text-[10px] ${platformColors[p]}`}>
+                          <Badge key={p} className={`h-7 rounded-full px-2.5 text-sm sm:h-4 sm:px-1.5 sm:text-[10px] ${platformColors[p]}`}>
                             {p}
                           </Badge>
                         ))}
                       </div>
                       {post.scheduledFor && (
-                        <p className="mt-1 text-xs text-white/35 sm:text-[10px] sm:text-white/30">
-                          <Clock className="inline h-2.5 w-2.5 mr-0.5" />
+                        <p className="mt-2 text-sm text-white/40 sm:mt-1 sm:text-[10px] sm:text-white/30">
+                          <Clock className="mr-1 inline h-3.5 w-3.5 sm:mr-0.5 sm:h-2.5 sm:w-2.5" />
                           {new Date(post.scheduledFor).toLocaleDateString("en-US", {
                             month: "short",
                             day: "numeric",
