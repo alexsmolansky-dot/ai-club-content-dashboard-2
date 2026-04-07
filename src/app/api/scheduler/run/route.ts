@@ -15,32 +15,54 @@
  * Local dev (open):
  *   curl http://localhost:3000/api/scheduler/run
  *
- * Production:
- *   curl https://your-domain.com/api/scheduler/run?secret=<SCHEDULER_SECRET>
+ * Production cron:
+ *   Vercel Cron calls this route from vercel.json once per day.
+ *   Set CRON_SECRET to the same value as SCHEDULER_SECRET so Vercel sends:
+ *   Authorization: Bearer <SCHEDULER_SECRET>
  *
- * Cron (e.g. Vercel Cron, GitHub Actions, Upstash):
- *   Schedule a GET to the URL above every minute or however often you need.
+ * Production manual:
+ *   The Planner "Run Scheduler" button still calls this route directly.
  */
 
 import { NextRequest } from "next/server";
 import { runScheduler } from "@/lib/scheduler";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: NextRequest) {
-  // ── Secret check ────────────────────────────────────────────────────────
+  const userAgent = request.headers.get("user-agent") ?? "";
+  const authorization = request.headers.get("authorization");
+  const isVercelCron = userAgent.includes("vercel-cron/1.0");
+  const isBearerRequest = authorization?.startsWith("Bearer ") ?? false;
+  const isAuthorizedRequest = isVercelCron || isBearerRequest;
+
+  // ── Cron secret check ───────────────────────────────────────────────────
   const secret = process.env.SCHEDULER_SECRET;
   if (!secret && process.env.NODE_ENV === "production") {
+    console.error("[api/scheduler/run] Missing SCHEDULER_SECRET in production");
     return Response.json(
       { error: "Scheduler is not configured. Set SCHEDULER_SECRET." },
       { status: 500 }
     );
   }
 
-  if (secret && request.nextUrl.searchParams.get("secret") !== secret) {
+  if (isAuthorizedRequest && authorization !== `Bearer ${secret}`) {
+    console.warn("[api/scheduler/run] Unauthorized scheduler request", {
+      hasAuthorization: Boolean(authorization),
+      isVercelCron,
+      userAgent,
+    });
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
+    console.log("[api/scheduler/run] Starting scheduler", {
+      source: isVercelCron ? "vercel-cron" : isBearerRequest ? "bearer" : "manual",
+      userAgent,
+    });
+
     const result = await runScheduler();
+    console.log("[api/scheduler/run] Scheduler completed", result);
     return Response.json({ ok: true, ...result });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
