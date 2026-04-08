@@ -317,16 +317,16 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
   return (
     <>
       {/* Backdrop */}
-      <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      <div className="fixed inset-0 z-50 bg-[var(--app-overlay)] backdrop-blur-sm" onClick={onClose} />
 
       {/* Modal */}
       <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-4">
         <div
-          className="pointer-events-auto flex max-h-[94vh] w-full max-w-xl flex-col overflow-hidden rounded-[1.65rem] border border-white/[0.055] bg-[oklch(0.1_0.015_264)] shadow-2xl shadow-black/60 sm:max-h-[90vh] sm:rounded-2xl sm:border-white/[0.1]"
+          className="app-surface pointer-events-auto flex max-h-[94vh] w-full max-w-xl flex-col overflow-hidden rounded-[1.65rem] border shadow-2xl shadow-[var(--app-shadow)] sm:max-h-[90vh] sm:rounded-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex shrink-0 items-center justify-between border-b border-white/[0.04] px-8 py-7 sm:border-white/[0.07] sm:px-5 sm:py-4">
+          <div className="flex shrink-0 items-center justify-between border-b border-[var(--app-border-soft)] px-8 py-7 sm:px-5 sm:py-4">
             <div className="flex items-center gap-4 sm:gap-3">
               <div
                 className={`flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg sm:h-8 sm:w-8 ${
@@ -342,17 +342,17 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                 )}
               </div>
               <div>
-                <h2 className="text-[1.7rem] font-semibold leading-[1.15] text-white sm:text-sm sm:leading-normal">
+                <h2 className="text-[1.7rem] font-semibold leading-[1.15] text-[var(--app-text)] sm:text-sm sm:leading-normal">
                   {isEditing ? "Edit Post" : "New Post"}
                 </h2>
-                <p className="mt-2 text-base leading-[1.45] text-white/38 sm:mt-0.5 sm:text-[10px] sm:leading-normal sm:text-white/35">
+                <p className="mt-2 text-base leading-[1.45] text-[var(--app-text-subtle)] sm:mt-0.5 sm:text-[10px] sm:leading-normal">
                   {isEditing ? "Update this post in Supabase" : "Create content for your platforms"}
                 </p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="flex h-12 w-12 items-center justify-center rounded-xl text-white/42 transition-all hover:bg-white/[0.045] hover:text-white sm:h-7 sm:w-7 sm:rounded-lg sm:text-white/40 sm:hover:bg-white/[0.07]"
+              className="flex h-12 w-12 items-center justify-center rounded-xl text-[var(--app-text-subtle)] transition-all hover:bg-[var(--app-card-soft)] hover:text-[var(--app-text)] sm:h-7 sm:w-7 sm:rounded-lg"
             >
               <X className="h-5 w-5 sm:h-4 sm:w-4" />
             </button>
@@ -477,7 +477,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
 
             {/* Format */}
             <div>
-              <label className="mb-3 block text-sm font-semibold uppercase leading-[1.45] tracking-wider text-white/50 sm:mb-2 sm:text-[11px] sm:leading-normal sm:text-white/35">
+              <label className="mb-3 block text-sm font-semibold uppercase leading-[1.45] tracking-wider text-[var(--app-text-subtle)] sm:mb-2 sm:text-[11px] sm:leading-normal">
                 Format
               </label>
               <div className="flex flex-wrap gap-2">
@@ -501,16 +501,16 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
 
             {/* Content pillar */}
             <div>
-              <label className="mb-3 block text-sm font-semibold uppercase leading-[1.45] tracking-wider text-white/50 sm:mb-2 sm:text-[11px] sm:leading-normal sm:text-white/35">
+              <label className="mb-3 block text-sm font-semibold uppercase leading-[1.45] tracking-wider text-[var(--app-text-subtle)] sm:mb-2 sm:text-[11px] sm:leading-normal">
                 Content Pillar
               </label>
               <select
                 value={form.pillar}
                 onChange={(e) => set("pillar", e.target.value as ContentPillar)}
-                className="w-full rounded-2xl border border-white/[0.08] bg-[oklch(0.1_0.015_264)] px-5 py-[18px] text-lg leading-[1.45] text-white/85 transition-all focus:border-white/20 focus:outline-none sm:rounded-xl sm:px-3.5 sm:py-2.5 sm:text-sm sm:leading-normal sm:text-white/80"
+                className="app-input w-full rounded-2xl border px-5 py-[18px] text-lg leading-[1.45] transition-all focus:border-[var(--ring)] focus:outline-none sm:rounded-xl sm:px-3.5 sm:py-2.5 sm:text-sm sm:leading-normal"
               >
                 {PILLARS.map((p) => (
-                  <option key={p.value} value={p.value} className="bg-[oklch(0.1_0.015_264)]">
+                  <option key={p.value} value={p.value} className="bg-[var(--app-bg-elevated)]">
                     {p.label}
                   </option>
                 ))}
@@ -519,7 +519,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
 
             {/* Status */}
             <div>
-              <label className="mb-3 block text-sm font-semibold uppercase leading-[1.45] tracking-wider text-white/50 sm:mb-2 sm:text-[11px] sm:leading-normal sm:text-white/35">
+              <label className="mb-3 block text-sm font-semibold uppercase leading-[1.45] tracking-wider text-[var(--app-text-subtle)] sm:mb-2 sm:text-[11px] sm:leading-normal">
                 Post Status
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -548,7 +548,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
               {form.status === "scheduled" && (
                 <div className="mt-4 grid grid-cols-1 gap-4 sm:mt-3 sm:grid-cols-2 sm:gap-3">
                   <div>
-                    <label className="mb-2 block text-sm leading-[1.45] text-white/45 sm:mb-1.5 sm:text-[11px] sm:leading-normal sm:text-white/30">
+                    <label className="mb-2 block text-sm leading-[1.45] text-[var(--app-text-subtle)] sm:mb-1.5 sm:text-[11px] sm:leading-normal">
                       Date <span className="text-rose-400">*</span>
                     </label>
                     <input
@@ -556,8 +556,8 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                       value={form.scheduledDate}
                       min={new Date().toISOString().split("T")[0]}
                       onChange={(e) => set("scheduledDate", e.target.value)}
-                      className={`w-full rounded-2xl border bg-[oklch(0.1_0.015_264)] px-5 py-[18px] text-lg leading-[1.45] text-white/85 transition-all focus:border-white/20 focus:outline-none sm:rounded-xl sm:px-3.5 sm:py-2.5 sm:text-sm sm:leading-normal sm:text-white/80 ${
-                        errors.scheduledDate ? "border-rose-500/50" : "border-white/[0.08]"
+                      className={`app-input w-full rounded-2xl border px-5 py-[18px] text-lg leading-[1.45] transition-all focus:border-[var(--ring)] focus:outline-none sm:rounded-xl sm:px-3.5 sm:py-2.5 sm:text-sm sm:leading-normal ${
+                        errors.scheduledDate ? "border-rose-500/50" : ""
                       }`}
                     />
                     {errors.scheduledDate && (
@@ -565,12 +565,12 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
                     )}
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm leading-[1.45] text-white/45 sm:mb-1.5 sm:text-[11px] sm:leading-normal sm:text-white/30">Time</label>
+                    <label className="mb-2 block text-sm leading-[1.45] text-[var(--app-text-subtle)] sm:mb-1.5 sm:text-[11px] sm:leading-normal">Time</label>
                     <input
                       type="time"
                       value={form.scheduledTime}
                       onChange={(e) => set("scheduledTime", e.target.value)}
-                      className="w-full rounded-2xl border border-white/[0.08] bg-[oklch(0.1_0.015_264)] px-5 py-[18px] text-lg leading-[1.45] text-white/85 transition-all focus:border-white/20 focus:outline-none sm:rounded-xl sm:px-3.5 sm:py-2.5 sm:text-sm sm:leading-normal sm:text-white/80"
+                      className="app-input w-full rounded-2xl border px-5 py-[18px] text-lg leading-[1.45] transition-all focus:border-[var(--ring)] focus:outline-none sm:rounded-xl sm:px-3.5 sm:py-2.5 sm:text-sm sm:leading-normal"
                     />
                   </div>
                 </div>
@@ -579,7 +579,7 @@ export function CreatePostModal({ open, onClose, onCreated, post }: CreatePostMo
           </div>
 
           {/* Footer */}
-          <div className="flex shrink-0 flex-col gap-5 border-t border-white/[0.07] px-7 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:px-5 sm:py-4">
+          <div className="flex shrink-0 flex-col gap-5 border-t border-[var(--app-border-soft)] px-7 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:px-5 sm:py-4">
             <div className="flex flex-wrap items-center gap-2.5 sm:gap-2">
               {form.platforms.map((p) => {
                 const cfg = PLATFORMS.find((x) => x.value === p)!;

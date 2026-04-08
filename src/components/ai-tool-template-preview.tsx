@@ -10,7 +10,7 @@ export function AiToolTemplatePreview({ data, className }: AiToolTemplatePreview
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[oklch(0.10_0.018_264)]",
+        "app-surface relative overflow-hidden rounded-2xl border",
         className
       )}
     >

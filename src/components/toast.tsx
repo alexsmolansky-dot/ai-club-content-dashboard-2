@@ -87,19 +87,19 @@ const TOAST_STYLES: Record<
 > = {
   success: {
     wrapper:
-      "border-emerald-500/30 bg-[oklch(0.11_0.025_160)] text-emerald-100 shadow-emerald-900/40",
+      "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 shadow-emerald-900/15 dark:bg-[oklch(0.11_0.025_160)] dark:text-emerald-100 dark:shadow-emerald-900/40",
     icon: CheckCircle2,
     iconClass: "text-emerald-400",
   },
   error: {
     wrapper:
-      "border-red-500/30 bg-[oklch(0.11_0.025_25)] text-red-100 shadow-red-900/40",
+      "border-red-500/30 bg-red-500/10 text-red-700 shadow-red-900/15 dark:bg-[oklch(0.11_0.025_25)] dark:text-red-100 dark:shadow-red-900/40",
     icon: AlertCircle,
     iconClass: "text-red-400",
   },
   info: {
     wrapper:
-      "border-blue-500/30 bg-[oklch(0.11_0.025_250)] text-blue-100 shadow-blue-900/40",
+      "border-blue-500/30 bg-blue-500/10 text-blue-700 shadow-blue-900/15 dark:bg-[oklch(0.11_0.025_250)] dark:text-blue-100 dark:shadow-blue-900/40",
     icon: Info,
     iconClass: "text-blue-400",
   },

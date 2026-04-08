@@ -160,7 +160,7 @@ export default function AiAssistantPage() {
                   className="w-full appearance-none rounded-[1.35rem] border border-white/[0.04] bg-white/[0.025] px-5 py-[18px] pr-12 text-lg leading-[1.45] text-white outline-none transition focus:border-purple-500/40 focus:ring-1 focus:ring-purple-500/20 disabled:opacity-50 sm:rounded-xl sm:border-white/[0.08] sm:bg-white/[0.04] sm:px-4 sm:py-3 sm:pr-10 sm:text-sm sm:leading-normal sm:focus:border-purple-500/50 sm:focus:ring-purple-500/30"
                 >
                   {LANGUAGE_OPTIONS.map((opt) => (
-                    <option key={opt.value} value={opt.value} className="bg-[#1a1a2e]">
+                    <option key={opt.value} value={opt.value} className="bg-[var(--app-bg-elevated)]">
                       {opt.label}
                     </option>
                   ))}
@@ -182,7 +182,7 @@ export default function AiAssistantPage() {
                   className="w-full appearance-none rounded-[1.35rem] border border-white/[0.04] bg-white/[0.025] px-5 py-[18px] pr-12 text-lg leading-[1.45] text-white outline-none transition focus:border-purple-500/40 focus:ring-1 focus:ring-purple-500/20 disabled:opacity-50 sm:rounded-xl sm:border-white/[0.08] sm:bg-white/[0.04] sm:px-4 sm:py-3 sm:pr-10 sm:text-sm sm:leading-normal sm:focus:border-purple-500/50 sm:focus:ring-purple-500/30"
                 >
                   {TONE_OPTIONS.map((opt) => (
-                    <option key={opt.value} value={opt.value} className="bg-[#1a1a2e]">
+                    <option key={opt.value} value={opt.value} className="bg-[var(--app-bg-elevated)]">
                       {opt.label}
                     </option>
                   ))}

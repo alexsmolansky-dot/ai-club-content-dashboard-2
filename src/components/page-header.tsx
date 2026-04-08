@@ -32,9 +32,9 @@ export function PageHeader({
           </div>
         )}
         <div>
-          <h1 className="text-[2.75rem] font-bold leading-[1.02] tracking-tight text-white sm:text-xl sm:leading-normal">{title}</h1>
+          <h1 className="text-[2.75rem] font-bold leading-[1.02] tracking-tight text-[var(--app-text)] sm:text-xl sm:leading-normal">{title}</h1>
           {description && (
-            <p className="mt-3 text-[17px] leading-[1.55] text-white/42 sm:mt-0.5 sm:text-sm sm:leading-normal sm:text-white/40">{description}</p>
+            <p className="mt-3 text-[17px] leading-[1.55] text-[var(--app-text-subtle)] sm:mt-0.5 sm:text-sm sm:leading-normal">{description}</p>
           )}
         </div>
       </div>
